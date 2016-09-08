@@ -10,7 +10,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from collections import Counter
 import copy
 import time
-import final_gibbs
+import classtopics
 
 
 def calculate(topics=[], lis=[], count1=0):
@@ -155,7 +155,7 @@ def main(*x, **r):
 
     topics = _test_LDA(l, path1, file=r['file'],data_samples=r['data_samples'])
     top=[]
-    fscore=final_gibbs.main(k=b,alpha=l[1],beta=l[2],file=r['file'],data_samples=r['data_samples'], target=r['target'])
+    fscore=classtopics.main(k=b,alpha=l[1],beta=l[2],file=r['file'],data_samples=r['data_samples'], target=r['target'])
     for i in topics:
         temp=str(i.encode('ascii','ignore'))
         top.append(temp)

@@ -7,13 +7,13 @@ import pickle
 from demos import atom
 from demos import cmd
 import collections
-from ldagibbs import *
+from topicsgibbs import *
 import random
 import time
 import copy
 import operator
 import os, pickle
-import final_gibbs
+import classwords
 
 __all__ = ['DE']
 Individual = collections.namedtuple('Individual', 'ind fit')
@@ -234,7 +234,7 @@ def _test(res=''):
 
     ## Running the lda again with max score
     l=final_para_dic[res][7][result[res][7]]
-    fscore=final_gibbs.main(k=l[0][0],alpha=l[0][1],beta=l[0][2],file=res,data_samples=data_samples, target=labellist)
+    fscore=classwords.main(k=l[0][0],alpha=l[0][1],beta=l[0][2],file=res,data_samples=data_samples, target=labellist)
     #final_gibbs.main(k=10,alpha=0.1,beta=0.01,file=res,data_samples=data_samples, target=labellist)
 
 

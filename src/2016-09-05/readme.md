@@ -1,1 +1,2 @@
-### Topics as feature vectors for supervised learning
+- Topics as feature vectors for supervised learning
+- words as feature vectors for the topmost weighted topic
