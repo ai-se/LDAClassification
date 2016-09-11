@@ -13,7 +13,7 @@ import time
 import copy
 import operator
 import os, pickle
-import classtopics
+import svmlda
 
 __all__ = ['DE']
 Individual = collections.namedtuple('Individual', 'ind fit')
@@ -183,12 +183,13 @@ def _test(res=''):
     #fileB = ['pitsA', 'pitsB', 'pitsC', 'pitsD', 'pitsE', 'pitsF', 'processed_citemap.txt']
     #fileB = ['SE0', 'SE6', 'SE1', 'SE8', 'SE3']
     #filepath = '/share/aagrawa8/Data/SE/'
+    start_time = time.time()
     filepath='/share/aagrawa8/Data/SE/'
 
 
     data_samples, labellist = readfile1(filepath + str(res)+'.txt')
     labels = [7]#[1, 2, 3, 4, 5, 6, 7, 8, 9]
-    start_time = time.time()
+
     random.seed(1)
     global bounds
     # stability score format dict, file,lab=score
@@ -211,7 +212,7 @@ def _test(res=''):
         v, score,para_dict,gen = de.solve(main, pop, iterations=3, file=res, term=lab, data_samples=data_samples,target=labellist)
         temp1[lab]=para_dict
         temp2[lab]=gen
-        print(v, '->', score)
+        #print(v, '->', score)
 
         temp3[lab]= score
     result[res] = temp3
@@ -223,19 +224,33 @@ def _test(res=''):
     time1={}
     # runtime,format dict, file,=runtime in secs
     time1[res]=time.time() - start_time
-
-
-    with open('dump/tuned_gibbs_'+res+'.pickle', 'wb') as handle:
-        pickle.dump(result, handle)
-        pickle.dump(final_current_dic, handle)
-        pickle.dump(final_para_dic, handle)
-        pickle.dump(time1,handle)
-    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
+    temp=[result,final_current_dic,final_para_dic,time1]
 
     ## Running the lda again with max score
     l=final_para_dic[res][7][result[res][7]]
-    fscore=classtopics.main(k=l[0][0],alpha=l[0][1],beta=l[0][2],file=res,data_samples=data_samples, target=labellist)
-    #final_gibbs.main(k=10,alpha=0.1,beta=0.01,file=res,data_samples=data_samples, target=labellist)
+    fscore=svmlda.main(k=l[0][0],alpha=l[0][1],beta=l[0][2],file=res,data_samples=data_samples, target=labellist)
+
+    with open('dump/svm_topics_'+res+'.pickle', 'wb') as handle:
+        pickle.dump(temp, handle)
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
+
+    ##untuned experiment
+    '''tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
+    tf = tf_vectorizer.fit_transform(data_samples)
+    temp={}
+    l={}
+    for i in [10,20,40,80,200]:
+        lda1 = lda.LDA(n_topics=i, alpha=0.1, eta=0.01, n_iter=100)
+
+        lda1.fit_transform(tf)
+        tops = lda1.doc_topic_
+
+        #print(word1)
+        temp[i]=svmlda.main(data=tops,file=res, target=labellist)
+    l[res]=temp
+    with open('dump/svm_words_untuned_'+res+'.pickle', 'wb') as handle:
+        pickle.dump(l, handle)
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))'''
 
 
 bounds = [(10, 50), (0.1, 1), (0.1, 1)]

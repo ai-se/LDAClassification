@@ -20,8 +20,7 @@ from ABCD import ABCD
 
 def main(**r):
     # 1st r
-    start_time = time()
-    data_samples = r['data_samples']
+    '''data_samples = r['data_samples']
     tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
     tf = tf_vectorizer.fit_transform(data_samples)
 
@@ -32,7 +31,7 @@ def main(**r):
     tops = lda1.doc_topic_
     #print(tops[0])
     # print(tops[0].argmax())
-    divider = randint(0, int(r['k']) - 1)
+    divider = randint(0, int(r['k']) - 1)'''
 
     '''for i in range(len(data_samples)):
         if tops[i].argmax() == divider:
@@ -40,7 +39,7 @@ def main(**r):
         else:
             docs.append(data_samples[i] + ' >>> no')'''
 
-    fscore=_test(tops, file=r['file'].split('.')[0].strip(), targetlist=r['target'])
+    fscore=_test(r['data'], file=r['file'], targetlist=r['target'])
     return fscore
 
 
@@ -277,9 +276,10 @@ def _test(data=[],file='', targetlist=[]):
     print("\n")
     tmp = []
 
-    with open('dump/' + file + '_tuned_SE.pickle', 'wb') as handle:
+    ##tuned
+    with open('dump/' + file + '_tuned_words.pickle', 'wb') as handle:
         pickle.dump(F_final, handle)
-    return np.median(temp_file)
+    return temp_file
 
 #SE0: Counter({'no': 6008, 'yes': 309})
 #SE1  Counter({'no': 47201, 'yes': 1441})

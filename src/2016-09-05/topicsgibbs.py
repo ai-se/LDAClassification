@@ -10,7 +10,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from collections import Counter
 import copy
 import time
-import classtopics
+import svmlda
 
 
 def calculate(topics=[], lis=[], count1=0):
@@ -119,6 +119,7 @@ def _test_LDA(l, path1, file='',data_samples=[]):
     fileB.append(file)
     #filepath = '/home/amrit/GITHUB/Pits_lda/dataset/'
     topics=[]
+    tops=[]
     for j, file1 in enumerate(fileB):
         for i in range(10):
             #data_samples = readfile1(filepath + str(file1))
@@ -132,18 +133,18 @@ def _test_LDA(l, path1, file='',data_samples=[]):
             lda1 = lda.LDA(n_topics=int(l[0]), alpha=l[1], eta=l[2],n_iter=100)
 
             lda1.fit_transform(tf)
-
+            tops = lda1.doc_topic_
             # print("done in %0.3fs." % (time() - t0))
             tf_feature_names = tf_vectorizer.get_feature_names()
             topics.extend(get_top_words(lda1, path1, tf_feature_names, n_top_words, i=i, file1=file1))
-    return topics
+    return topics,tops
 
 
 def main(*x, **r):
     # 1st r
     start_time = time.time()
     base = '/share/aagrawa8/Data/results/SE/'
-    path = os.path.join(base, 'tuned_gibbs', r['file'], str(r['term']))
+    path = os.path.join(base, 'svm_topics', r['file'], str(r['term']))
     if not os.path.exists(path):
         os.makedirs(path)
     l = np.asarray(x)
@@ -153,15 +154,15 @@ def main(*x, **r):
         f.truncate()
 
 
-    topics = _test_LDA(l, path1, file=r['file'],data_samples=r['data_samples'])
+    topics,tops = _test_LDA(l, path1, file=r['file'],data_samples=r['data_samples'])
     top=[]
-    fscore=classtopics.main(k=b,alpha=l[1],beta=l[2],file=r['file'],data_samples=r['data_samples'], target=r['target'])
+    fscore=svmlda.main(data=tops,file=r['file'], target=r['target'])
     for i in topics:
         temp=str(i.encode('ascii','ignore'))
         top.append(temp)
     a = jaccard(b, score_topics=top, term=r['term'])
     fo = open(path1, 'a+')
-    fo.write("\nRuntime: --- %s seconds ---\n" % (time.time() - start_time))
     fo.write("\nScore: " + str(a))
+    fo.write("\nRuntime: --- %s seconds ---\n" % (time.time() - start_time))
     fo.close()
-    return a+fscore
+    return a+np.median(fscore)
