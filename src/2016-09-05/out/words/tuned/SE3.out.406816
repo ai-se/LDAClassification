@@ -1,0 +1,39 @@
+SE3	7
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3n5-12>
+Subject: Job 406816: </share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE3> Exited
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE3> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3n5-12>, in queue <long>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/de> was used as the working directory.
+Started at Sun Sep 11 17:15:02 2016
+Results reported at Sun Sep 11 17:51:55 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE3
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time   :   1686.69 sec.
+    Max Memory :     22098 MB
+    Max Swap   :     39721 MB
+
+    Max Processes  :         3
+    Max Threads    :        11
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/SE3.err.406816> for stderr output of this job.
+

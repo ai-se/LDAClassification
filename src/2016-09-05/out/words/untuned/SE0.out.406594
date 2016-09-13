@@ -1,0 +1,56 @@
+{'SE0': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+
+
+{'SE0': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+
+
+{'SE0': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+
+
+{'SE0': [0.0, 0.0, 0.62872628726287261, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.63440860215053763, 0.0, 0.0, 0.0, 0.0, 0.63978494623655913, 0.0, 0.0, 0.63611859838274931, 0.0, 0.0, 0.0, 0.0, 0.0, 0.62330623306233057, 0.0]}
+
+
+{'SE0': [0.64343163538873993, 0.65608465608465605, 0.6487935656836461, 0.65608465608465605, 0.6507936507936507, 0.66840731070496084, 0.65775401069518713, 0.64171122994652396, 0.63806970509383376, 0.64893617021276606, 0.66137566137566139, 0.66137566137566139, 0.6507936507936507, 0.63611859838274931, 0.64533333333333331, 0.59052924791086348, 0.59890109890109888, 0.65240641711229941, 0.66315789473684217, 0.65957446808510634, 0.5842696629213483, 0.62330623306233057, 0.6507936507936507, 0.65066666666666673, 0.65782493368700268]}
+
+
+
+Total Runtime: --- 823.549586058 seconds ---
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3l4-7>
+Subject: Job 406594: </share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE0> Done
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE0> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3l4-7>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/de1> was used as the working directory.
+Started at Sun Sep 11 12:20:58 2016
+Results reported at Sun Sep 11 12:34:43 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE0
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :   1111.11 sec.
+    Max Memory :      2149 MB
+    Max Swap   :      3212 MB
+
+    Max Processes  :         3
+    Max Threads    :        19
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/SE0.err.406594> for stderr output of this job.
+

@@ -228,7 +228,12 @@ def _test(res=''):
 
     ## Running the lda again with max score
     l=final_para_dic[res][7][result[res][7]]
-    fscore=svmlda.main(k=l[0][0],alpha=l[0][1],beta=l[0][2],file=res,data_samples=data_samples, target=labellist)
+    tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
+    tf = tf_vectorizer.fit_transform(data_samples)
+    lda1 = lda.LDA(n_topics=l[0][0], alpha=l[0][1], eta=l[0][1], n_iter=100)
+    lda1.fit_transform(tf)
+    tops = lda1.doc_topic_
+    fscore=svmlda.main(data=tops,file=res, target=labellist)
 
     with open('dump/svm_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(temp, handle)

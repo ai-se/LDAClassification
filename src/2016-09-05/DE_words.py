@@ -184,7 +184,7 @@ def _test(res=''):
     #fileB = ['SE0', 'SE6', 'SE1', 'SE8', 'SE3']
     #filepath = '/share/aagrawa8/Data/SE/'
     start_time = time.time()
-    filepath='/home/amrit/GITHUB/LDAClassification/dataset/SE/'
+    filepath='/share/aagrawa8/Data/SE/'
 
 
     data_samples, labellist = readfile1(filepath + str(res)+'.txt')
@@ -227,9 +227,19 @@ def _test(res=''):
 
     ## Running the lda again with max score
     l=final_para_dic[res][7][result[res][7]]
-    fscore=svmlda.main(k=l[0][0],alpha=l[0][1],beta=l[0][2],file=res,data_samples=data_samples, target=labellist)
 
-    with open('dump/svm_topics_'+res+'.pickle', 'wb') as handle:
+    tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
+    tf = tf_vectorizer.fit_transform(data_samples)
+    lda1 = lda.LDA(n_topics=l[0][0], alpha=l[0][1], eta=l[0][2], n_iter=100)
+    lda1.fit_transform(tf)
+    tops = lda1.doc_topic_
+    topic_word = lda1.topic_word_
+    word1=[]
+    for i in range(len(data_samples)):
+        word1.append(topic_word[tops[i].argmax()])
+    fscore=svmlda.main(data=np.asarray(word1),file=res, target=labellist)
+
+    with open('dump/svm_words_'+res+'.pickle', 'wb') as handle:
         pickle.dump(temp, handle)
     print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
 
@@ -238,8 +248,8 @@ def _test(res=''):
     tf = tf_vectorizer.fit_transform(data_samples)
     temp={}
     l={}
-    for i in [10,20,40,80,200]:
-        lda1 = lda.LDA(n_topics=i, alpha=0.1, eta=0.01, n_iter=100)
+    for j in [10,20,40,80,200]:
+        lda1 = lda.LDA(n_topics=j, alpha=0.1, eta=0.01, n_iter=100)
 
         lda1.fit_transform(tf)
         tops = lda1.doc_topic_
@@ -248,7 +258,7 @@ def _test(res=''):
         for i in range(len(data_samples)):
             word1.append(topic_word[tops[i].argmax()])
         #print(word1)
-        temp[i]=svmlda.main(data=np.asarray(word1),file=res, target=labellist)
+        temp[j]=svmlda.main(data=np.asarray(word1),file=res, target=labellist)
     l[res]=temp
     with open('dump/svm_words_untuned_'+res+'.pickle', 'wb') as handle:
         pickle.dump(l, handle)
