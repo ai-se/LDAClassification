@@ -10,7 +10,10 @@ from sklearn.feature_extraction.text import CountVectorizer
 from collections import Counter
 import copy
 import time
-import svmlda
+import svmtopics
+import sys
+
+sys.dont_write_bytecode = True
 
 
 def calculate(topics=[], lis=[], count1=0):
@@ -120,31 +123,33 @@ def _test_LDA(l, path1, file='',data_samples=[]):
     #filepath = '/home/amrit/GITHUB/Pits_lda/dataset/'
     topics=[]
     tops=[]
+    topic_word=[]
     for j, file1 in enumerate(fileB):
-        for i in range(10):
+        for i in range(1):
             #data_samples = readfile1(filepath + str(file1))
 
             # shuffling the list
-            shuffle(data_samples)
+            #shuffle(data_samples)
 
             tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
             tf = tf_vectorizer.fit_transform(data_samples)
 
-            lda1 = lda.LDA(n_topics=int(l[0]), alpha=l[1], eta=l[2],n_iter=100)
+            lda1 = lda.LDA(n_topics=int(l[0]), alpha=l[1], eta=l[2],n_iter=200)
 
             lda1.fit_transform(tf)
             tops = lda1.doc_topic_
-            # print("done in %0.3fs." % (time() - t0))
+            topic_word = lda1.topic_word_
+
             tf_feature_names = tf_vectorizer.get_feature_names()
-            topics.extend(get_top_words(lda1, path1, tf_feature_names, n_top_words, i=i, file1=file1))
-    return topics,tops
+            #topics.extend(get_top_words(lda1, path1, tf_feature_names, n_top_words, i=i, file1=file1))
+    return topics,tops,topic_word,tf_feature_names
 
 
 def main(*x, **r):
     # 1st r
     start_time = time.time()
-    base = '/share/aagrawa8/Data/results/SE/'
-    path = os.path.join(base, 'svm_topics', r['file'], str(r['term']))
+    base = '/share/aagrawa8/Data/SE/'
+    path = os.path.join(base, 'svm_topics_smote', r['file'], str(r['term']))
     if not os.path.exists(path):
         os.makedirs(path)
     l = np.asarray(x)
@@ -152,17 +157,21 @@ def main(*x, **r):
     path1 = path + "/K_" + str(b) + "_a_" + str(l[1]) + "_b_" + str(l[2]) + ".txt"
     with open(path1, "w") as f:
         f.truncate()
+    data=r['data_samples']
+
+    topics,tops,word,corpus = _test_LDA(l, path1, file=r['file'],data_samples=r['data_samples'])
+    word1=[]
 
 
-    topics,tops = _test_LDA(l, path1, file=r['file'],data_samples=r['data_samples'])
     top=[]
-    fscore=svmlda.main(data=tops,file=r['file'], target=r['target'])
-    for i in topics:
+    fscore = svmtopics.main(data=tops, file=r['file'], target=r['target'])
+    print(np.median(fscore))
+    '''for i in topics:
         temp=str(i.encode('ascii','ignore'))
         top.append(temp)
-    a = jaccard(b, score_topics=top, term=r['term'])
+    a = jaccard(b, score_topics=top, term=r['term'])'''
     fo = open(path1, 'a+')
-    fo.write("\nScore: " + str(a))
+    #fo.write("\nScore: " + str(a))
     fo.write("\nRuntime: --- %s seconds ---\n" % (time.time() - start_time))
     fo.close()
-    return a+np.median(fscore)
+    return np.median(fscore)

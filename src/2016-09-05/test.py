@@ -16,5 +16,6 @@ topic_word = model.topic_word_  # model.components_ also works
 n_top_words = 8
 
 doc_topic = model.doc_topic_
+print(doc_topic[0])
 for i in range(10):
     print("{} (top topic: {})".format(titles[i], doc_topic[i].argmax()))

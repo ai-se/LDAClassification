@@ -12,8 +12,11 @@ from sklearn import svm
 from sklearn.feature_extraction import FeatureHasher
 from time import time
 import pickle
-import sys
 import operator
+import sys
+from sklearn.preprocessing import *
+
+sys.dont_write_bytecode = True
 
 from ABCD import ABCD
 
@@ -92,11 +95,9 @@ def hash(mat, n_features=1000):
 "make feature matrix"
 
 
-def make_feature(corpus, method="tfidf", n_features=1000):
-    label = list(zip(*corpus)[0])
-    mat = tf(corpus)
-    matt = hash(mat, n_features=n_features)
-    return matt, label
+def make_feature(corpus, n_features=1000):
+    matt = hash(corpus, n_features=n_features)
+    return matt
 
 
 "split data according to target label"
@@ -141,12 +142,13 @@ def smote(data, num, k=5):
 
 
 def do_SVM(train_data, test_data, train_label, test_label):
-    clf = svm.LinearSVC(dual=False)
+    clf = svm.SVC(kernel='linear')
     clf.fit(train_data, train_label)
     prediction = clf.predict(test_data)
     abcd = ABCD(before=test_label, after=prediction)
     F = np.array([k.stats()[-2] for k in abcd()])
     labeltwo = list(set(test_label))
+    #print(labeltwo)
     if labeltwo[0] == 'positive':
         labelone = 0
     else:
@@ -177,14 +179,15 @@ def cross_val(data=[], thres=[0.02, 0.05], folds=5,
 
     "generate training set and testing set"
 
-    def train_test(pos, neg, folds, index, issmote="no_smote", neighbors=1):
+    def train_test(pos, neg, folds, index, issmote="no_smote", neighbors=5):
         pos_train, pos_test = cross_split(pos, folds=folds, index=index)
         neg_train, neg_test = cross_split(neg, folds=folds, index=index)
-        ##smoting
 
-        #num = int((len(pos_train) + len(neg_train)) / 2)
-        #pos_train = smote(pos_train, num, k=neighbors)
-        #neg_train = neg_train[np.random.choice(len(neg_train), num, replace=False)]
+        ##smoting
+        num = int((len(pos_train) + len(neg_train)) / 2)
+        pos_train = smote(pos_train, num, k=neighbors)
+        neg_train = neg_train[np.random.choice(len(neg_train), num, replace=False)]
+
         data_train = np.vstack((pos_train, neg_train))
         data_test = np.vstack((pos_test, neg_test))
         label_train = ['pos'] * len(pos_train) + ['neg'] * len(neg_train)
@@ -203,13 +206,20 @@ def cross_val(data=[], thres=[0.02, 0.05], folds=5,
 
         return data_train, data_test, label_train, label_test
 
-    #load = readfile(data=data, is_shingle=is_shingle, thres=thres)
-    # = load['corpus']
-    #targetlist = load['targetlist']
+    #print(data[0])
     target_label = min(Counter(target).iteritems(), key=operator.itemgetter(1))[0]
-    #print(Counter(target))
-    #print(target_label)
-    #data, label = make_feature(corpus, method=feature, n_features=n_feature)
+    #data = make_feature(data, n_features=n_feature)
+
+    ###OTHER PREPROCESSING STEPS
+    ## normalization to min max scale
+    #min_max_scaler = MinMaxScaler()
+    #data = min_max_scaler.fit_transform(data)
+    #data=data*1000
+
+    ## l2 normalization
+    #data = normalize(data, norm='l2')
+    #data=data*100
+
     #print(data, label)
     split = split_two(corpus=data, label=target, target_label=target_label)
     pos = split['pos']
@@ -267,23 +277,21 @@ def _test(data=[],file='', targetlist=[]):
     isshingle = ["no_shingle"]
     # issmote = ["no_smote"]
     F_final = {}
-    # temp_file = {}
-    temp_file = {}
     F_final[file] = temp_file = cross_val(data=data, thres=thres,
                                                  folds=5,
-                                                 n_feature=10000, target=targetlist)
-    print(F_final)
-    print("\n")
+                                                 n_feature=1000, target=targetlist)
+    #print(F_final)
     tmp = []
 
     ##tuned
-    with open('dump/' + file + '_tuned_words.pickle', 'wb') as handle:
+    #print(temp_file)
+    with open('dump/' + file + '_tuned_fscore_topics.pickle', 'wb') as handle:
         pickle.dump(F_final, handle)
     return temp_file
 
 #SE0: Counter({'no': 6008, 'yes': 309})
 #SE1  Counter({'no': 47201, 'yes': 1441})
 #SE3  Counter({'no': 83583, 'yes': 654})
-#SE6  Counter({'no': 15865, 'yes': 439})
+#SE6  Counter({'no': 15865, 'yes': 439})\
 #SE8  Counter({'no': 58076, 'yes': 195})
 

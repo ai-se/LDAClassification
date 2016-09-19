@@ -2,8 +2,6 @@ from __future__ import print_function, division
 
 __author__ = 'amrit'
 
-import sys
-import pickle
 from demos import atom
 from demos import cmd
 import collections
@@ -13,7 +11,10 @@ import time
 import copy
 import operator
 import os, pickle
-import svmlda
+import svmtopics
+import sys
+
+sys.dont_write_bytecode = True
 
 __all__ = ['DE']
 Individual = collections.namedtuple('Individual', 'ind fit')
@@ -178,19 +179,32 @@ def readfile1(filename=''):
                 pass
     return dict, labellst
 
+def readfile(filename=''):
+    dict = []
+    labellst = []
+
+    with open(filename, 'r') as f:
+        for doc in f.readlines():
+            try:
+                row = doc.lower().split('\t')[1].strip()
+                label = doc.lower().strip().split('\t')[0]
+                labellst.append(label)
+                dict.append(row)
+            except:
+                pass
+    return dict, labellst
 
 def _test(res=''):
     #fileB = ['pitsA', 'pitsB', 'pitsC', 'pitsD', 'pitsE', 'pitsF', 'processed_citemap.txt']
     #fileB = ['SE0', 'SE6', 'SE1', 'SE8', 'SE3']
-    #filepath = '/share/aagrawa8/Data/SE/'
+    filepath = '/share/aagrawa8/Data/SE/'
     start_time = time.time()
-    filepath='/share/aagrawa8/Data/SE/'
+    #filepath='/home/amrit/GITHUB/LDAClassification/dataset/SE/'
 
 
     data_samples, labellist = readfile1(filepath + str(res)+'.txt')
     labels = [7]#[1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-    random.seed(1)
+    '''random.seed(1)
     global bounds
     # stability score format dict, file,lab=score
     result={}
@@ -205,7 +219,7 @@ def _test(res=''):
     for lab in labels:
         global max_fitness
         max_fitness = 0
-        print(res+'\t'+str(lab))
+        #print(res+'\t'+str(lab))
         pop = [[random.randint(bounds[0][0], bounds[0][1]), random.uniform(bounds[1][0], bounds[1][1]),
                     random.uniform(bounds[2][0], bounds[2][1])]
                    for _ in range(10)]
@@ -222,43 +236,49 @@ def _test(res=''):
     print(final_current_dic)
     print(final_para_dic)
     time1={}
-    # runtime,format dict, file,=runtime in secs
-    time1[res]=time.time() - start_time
-    temp=[result,final_current_dic,final_para_dic,time1]
 
     ## Running the lda again with max score
     l=final_para_dic[res][7][result[res][7]]
+    print(l)
     tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
     tf = tf_vectorizer.fit_transform(data_samples)
-    lda1 = lda.LDA(n_topics=l[0][0], alpha=l[0][1], eta=l[0][1], n_iter=100)
+    lda1 = lda.LDA(n_topics=l[0][0], alpha=l[0][1], eta=l[0][2], n_iter=100)
     lda1.fit_transform(tf)
     tops = lda1.doc_topic_
-    fscore=svmlda.main(data=tops,file=res, target=labellist)
+    topic_word = lda1.topic_word_
+    word1=[]
+    fscore={}
+    for i in range(len(data_samples)):
+        word1.append(topic_word[tops[i].argmax()])
 
-    with open('dump/svm_topics_'+res+'.pickle', 'wb') as handle:
+    fscore[res]=svmlda.main(data=np.asarray(word1),file=res, target=labellist)
+
+    # runtime,format dict, file,=runtime in secs
+    time1[res] = time.time() - start_time
+    temp = [result, final_current_dic, final_para_dic, time1,fscore]
+    with open('dump/DE_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(temp, handle)
-    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))'''
 
     ##untuned experiment
-    '''tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
+    tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
     tf = tf_vectorizer.fit_transform(data_samples)
+    tf_feature_names = tf_vectorizer.get_feature_names()
     temp={}
     l={}
-    for i in [10,20,40,80,200]:
-        lda1 = lda.LDA(n_topics=i, alpha=0.1, eta=0.01, n_iter=100)
+    for j in [10,20,40,80,200]:
+        lda1 = lda.LDA(n_topics=j, alpha=0.1, eta=0.01, n_iter=200)
 
         lda1.fit_transform(tf)
         tops = lda1.doc_topic_
-
-        #print(word1)
-        temp[i]=svmlda.main(data=tops,file=res, target=labellist)
+        temp[j]=svmtopics.main(data=tops,file=res, target=labellist)
     l[res]=temp
-    with open('dump/svm_words_untuned_'+res+'.pickle', 'wb') as handle:
+    with open('dump/untuned_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(l, handle)
-    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))'''
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
 
 
-bounds = [(10, 50), (0.1, 1), (0.1, 1)]
+bounds = [(10, 100), (0.1, 1), (0.1, 1)]
 max_fitness = 0
 if __name__ == '__main__':
     eval(cmd())
