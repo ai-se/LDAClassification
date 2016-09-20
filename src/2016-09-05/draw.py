@@ -81,7 +81,7 @@ if __name__ == '__main__':
     for file1 in fileB:
         Y_tuned.append(np.median(topics_tuned[file1]))
     plt.plot(X, Y_tuned, marker='o', markersize=20, label='tuned')
-    x=[0,1.0,2]
+    x=[0,1.0,1.9]
     for i in range(len(fileB)):
         plt.text(x[i], Y_tuned[i], 'k='+str(topic[i]))
     for top in topics:
