@@ -1,0 +1,41 @@
+
+Total Runtime: --- 2575.7702651 seconds ---
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n2g2-9>
+Subject: Job 441775: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE1> Done
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE1> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n2g2-9>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Mon Sep 19 09:05:23 2016
+Results reported at Mon Sep 19 09:48:19 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE1
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :   2578.84 sec.
+    Max Memory :       620 MB
+    Max Swap   :      1762 MB
+
+    Max Processes  :         3
+    Max Threads    :        23
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/SE1.err.441775> for stderr output of this job.
+

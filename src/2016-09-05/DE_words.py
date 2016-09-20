@@ -251,11 +251,11 @@ def _test(res=''):
     for i in range(len(data_samples)):
         word1.append(topic_word[tops[i].argmax()])
 
-    fscore[res]=svmlda.main(data=np.asarray(word1),file=res, target=labellist)
+    fscore[res]=svmwords.main(data=np.asarray(word1),file=res, target=labellist)
 
     # runtime,format dict, file,=runtime in secs
     time1[res] = time.time() - start_time
-    temp = [result, final_current_dic, final_para_dic, time1,fscore]
+    temp = [result, final_para_dic, time1,fscore]
     with open('dump/DE_class_words_'+res+'.pickle', 'wb') as handle:
         pickle.dump(temp, handle)
     print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))
@@ -288,7 +288,7 @@ def _test(res=''):
     print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))'''
 
 
-bounds = [(10, 100), (0.1, 1), (0.1, 1)]
+bounds = [(10, 50), (0.1, 1), (0.1, 1)]
 max_fitness = 0
 if __name__ == '__main__':
     eval(cmd())

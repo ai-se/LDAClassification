@@ -1,0 +1,41 @@
+
+Total Runtime: --- 4546.28762412 seconds ---
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3l4-1>
+Subject: Job 439680: </share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE0> Done
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE0> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3l4-1>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/de1> was used as the working directory.
+Started at Sun Sep 18 23:06:15 2016
+Results reported at Mon Sep 19 00:22:09 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE0
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :   4556.24 sec.
+    Max Memory :      6621 MB
+    Max Swap   :      7689 MB
+
+    Max Processes  :         3
+    Max Threads    :        19
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/SE0.err.439680> for stderr output of this job.
+

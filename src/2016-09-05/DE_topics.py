@@ -194,7 +194,7 @@ def readfile(filename=''):
                 pass
     return dict, labellst
 
-def _test(res=''):
+def _topics(res=''):
     #fileB = ['pitsA', 'pitsB', 'pitsC', 'pitsD', 'pitsE', 'pitsF', 'processed_citemap.txt']
     #fileB = ['SE0', 'SE6', 'SE1', 'SE8', 'SE3']
     filepath = '/share/aagrawa8/Data/SE/'
@@ -203,8 +203,8 @@ def _test(res=''):
 
 
     data_samples, labellist = readfile1(filepath + str(res)+'.txt')
-    labels = [7]#[1, 2, 3, 4, 5, 6, 7, 8, 9]
-    '''random.seed(1)
+    '''labels = [7]#[1, 2, 3, 4, 5, 6, 7, 8, 9]
+    random.seed(1)
     global bounds
     # stability score format dict, file,lab=score
     result={}
@@ -251,11 +251,11 @@ def _test(res=''):
     for i in range(len(data_samples)):
         word1.append(topic_word[tops[i].argmax()])
 
-    fscore[res]=svmlda.main(data=np.asarray(word1),file=res, target=labellist)
+    fscore[res]=svmtopics.main(data=np.asarray(word1),file=res, target=labellist)
 
     # runtime,format dict, file,=runtime in secs
     time1[res] = time.time() - start_time
-    temp = [result, final_current_dic, final_para_dic, time1,fscore]
+    temp = [result, final_para_dic, time1,fscore]
     with open('dump/DE_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(temp, handle)
     print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))'''
@@ -278,7 +278,7 @@ def _test(res=''):
     print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
 
 
-bounds = [(10, 100), (0.1, 1), (0.1, 1)]
+bounds = [(10, 50), (0.1, 1), (0.1, 1)]
 max_fitness = 0
 if __name__ == '__main__':
     eval(cmd())
