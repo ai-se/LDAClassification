@@ -83,7 +83,7 @@ if __name__ == '__main__':
     plt.plot(X, Y_tuned, marker='o', markersize=20, label='tuned')
     x=[0,1.0,2]
     for i in range(len(fileB)):
-        plt.text(x[i], Y_tuned[i], 'k='+str(topics[i]))
+        plt.text(x[i], Y_tuned[i], 'k='+str(topic[i]))
     for top in topics:
         Y_untuned=[]
         for file1 in fileB:
