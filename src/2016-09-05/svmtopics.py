@@ -207,7 +207,20 @@ def cross_val(data=[], thres=[0.02, 0.05], folds=5,
         return data_train, data_test, label_train, label_test
 
     #print(data[0])
-    target_label = min(Counter(target).iteritems(), key=operator.itemgetter(1))[0]
+    l = len(data)
+    labelcount = Counter(target)
+    labellst = list(set(target))
+    # print(labelcount)
+    targetlist=[]
+    while True:
+        for label in labellst:
+            if labelcount[label] > l * thres[0] and labelcount[label] < l * thres[1]:
+                targetlist.append(label)
+        if targetlist: break
+        thres[1] = 2 * thres[1]
+        thres[0] = 0.5 * thres[0]
+
+    target_label = targetlist[0]
     #data = make_feature(data, n_features=n_feature)
 
     ###OTHER PREPROCESSING STEPS

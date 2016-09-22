@@ -172,7 +172,7 @@ def readfile1(filename=''):
         for doc in f.readlines():
             try:
                 row = doc.lower().split('>>>')[0].strip()
-                label = doc.lower().strip().split(' >>> ')[1]
+                label = doc.lower().strip().split(' >>> ')[1].split()[0]
                 labellst.append(label)
                 dict.append(row)
             except:

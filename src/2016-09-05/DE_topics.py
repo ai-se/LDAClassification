@@ -172,7 +172,7 @@ def readfile1(filename=''):
         for doc in f.readlines():
             try:
                 row = doc.lower().split('>>>')[0].strip()
-                label = doc.lower().strip().split(' >>> ')[1]
+                label = doc.lower().strip().split(' >>> ')[1].split()[0]
                 labellst.append(label)
                 dict.append(row)
             except:
@@ -203,7 +203,7 @@ def _topics(res=''):
 
 
     data_samples, labellist = readfile1(filepath + str(res)+'.txt')
-    '''labels = [7]#[1, 2, 3, 4, 5, 6, 7, 8, 9]
+    labels = [7]#[1, 2, 3, 4, 5, 6, 7, 8, 9]
     random.seed(1)
     global bounds
     # stability score format dict, file,lab=score
@@ -258,10 +258,10 @@ def _topics(res=''):
     temp = [result, final_para_dic, time1,fscore]
     with open('dump/DE_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(temp, handle)
-    print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))'''
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))
 
     ##untuned experiment
-    tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
+    '''tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
     tf = tf_vectorizer.fit_transform(data_samples)
     tf_feature_names = tf_vectorizer.get_feature_names()
     temp={}
@@ -275,7 +275,7 @@ def _topics(res=''):
     l[res]=temp
     with open('dump/untuned_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(l, handle)
-    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))'''
 
 
 bounds = [(10, 50), (0.1, 1), (0.1, 1)]
