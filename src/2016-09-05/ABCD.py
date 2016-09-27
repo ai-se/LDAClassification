@@ -20,15 +20,17 @@ class counter():
         pass
   def stats(self):
     try:
+      #recall
       Sen = self.TP / (self.TP + self.FN)
       Spec = self.TN / (self.TN + self.FP)
       Prec = self.TP / (self.TP + self.FP)
       Acc = (self.TP + self.TN) / (self.TP + self.FN + self.TN + self.FP)
       F = 2 * (Prec*Sen) / (Prec+Sen)
       F1 = 2 * self.TP / (2 * self.TP + self.FP + self.FN)
+      F2 = 5 * (Prec*Sen) / (4*Prec+Sen)
       G = 2 * Sen * Spec / (Sen + Spec)
       G1 = Sen * Spec / (Sen + Spec)
-      return Sen, Spec, Prec, Acc, F, G
+      return Sen, Spec, Prec, Acc, F, G, F2
     except ZeroDivisionError:
       return 0, 0, 0, 0, 0, 0
 

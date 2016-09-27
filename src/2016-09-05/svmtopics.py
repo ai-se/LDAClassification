@@ -146,7 +146,7 @@ def do_SVM(train_data, test_data, train_label, test_label):
     clf.fit(train_data, train_label)
     prediction = clf.predict(test_data)
     abcd = ABCD(before=test_label, after=prediction)
-    F = np.array([k.stats()[-2] for k in abcd()])
+    F = np.array([k.stats()[-1] for k in abcd()])
     labeltwo = list(set(test_label))
     #print(labeltwo)
     if labeltwo[0] == 'positive':

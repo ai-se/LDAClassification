@@ -278,7 +278,7 @@ def _topics(res=''):
     print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))'''
 
 
-bounds = [(10, 50), (0.1, 1), (0.1, 1)]
+bounds = [(50, 100), (0.1, 1), (0.1, 1)]
 max_fitness = 0
 if __name__ == '__main__':
     eval(cmd())
