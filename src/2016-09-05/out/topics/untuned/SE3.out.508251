@@ -1,17 +1,17 @@
 
-Total Runtime: --- 18626.6587811 seconds ---
+Total Runtime: --- 5358.86950803 seconds ---
 
 
 ------------------------------------------------------------
-Sender: LSF System <lsfadmin@n3g4-3>
-Subject: Job 505955: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE3> Done
+Sender: LSF System <lsfadmin@n2f1-7>
+Subject: Job 508251: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE3> Done
 
 Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE3> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
-Job was executed on host(s) <8*n3g4-3>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n2f1-7>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
 </home/aagrawa8> was used as the home directory.
 </home/aagrawa8/topics> was used as the working directory.
-Started at Tue Sep 27 09:14:42 2016
-Results reported at Tue Sep 27 14:25:11 2016
+Started at Tue Sep 27 16:38:41 2016
+Results reported at Tue Sep 27 18:08:04 2016
 
 Your job looked like:
 
@@ -24,12 +24,12 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time   :  18645.27 sec.
-    Max Memory :      1137 MB
-    Max Swap   :      2138 MB
+    CPU time   :   5361.64 sec.
+    Max Memory :      1176 MB
+    Max Swap   :      2321 MB
 
     Max Processes  :         3
-    Max Threads    :        19
+    Max Threads    :        23
 
 The output (if any) is above this job summary.
 
@@ -37,5 +37,5 @@ The output (if any) is above this job summary.
 
 PS:
 
-Read file <./err/SE3.err.505955> for stderr output of this job.
+Read file <./err/SE3.err.508251> for stderr output of this job.
 

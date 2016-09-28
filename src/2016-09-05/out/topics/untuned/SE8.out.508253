@@ -1,32 +1,32 @@
 
-Total Runtime: --- 7313.56010699 seconds ---
+Total Runtime: --- 4590.39601278 seconds ---
 
 
 ------------------------------------------------------------
 Sender: LSF System <lsfadmin@n3g4-2>
-Subject: Job 505954: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE1> Done
+Subject: Job 508253: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE8> Done
 
-Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE1> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE8> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
 Job was executed on host(s) <8*n3g4-2>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
 </home/aagrawa8> was used as the home directory.
 </home/aagrawa8/topics> was used as the working directory.
-Started at Tue Sep 27 09:14:42 2016
-Results reported at Tue Sep 27 11:16:38 2016
+Started at Tue Sep 27 16:38:41 2016
+Results reported at Tue Sep 27 17:55:12 2016
 
 Your job looked like:
 
 ------------------------------------------------------------
 # LSBATCH: User input
-/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE1
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE8
 ------------------------------------------------------------
 
 Successfully completed.
 
 Resource usage summary:
 
-    CPU time   :   7320.85 sec.
-    Max Memory :       701 MB
-    Max Swap   :      1710 MB
+    CPU time   :   4595.67 sec.
+    Max Memory :       842 MB
+    Max Swap   :      1845 MB
 
     Max Processes  :         3
     Max Threads    :        19
@@ -37,5 +37,5 @@ The output (if any) is above this job summary.
 
 PS:
 
-Read file <./err/SE1.err.505954> for stderr output of this job.
+Read file <./err/SE8.err.508253> for stderr output of this job.
 

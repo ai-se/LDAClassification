@@ -1,17 +1,17 @@
 
-Total Runtime: --- 1146.11662316 seconds ---
+Total Runtime: --- 1151.46187091 seconds ---
 
 
 ------------------------------------------------------------
-Sender: LSF System <lsfadmin@n2f1-7>
-Subject: Job 505959: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy> Done
+Sender: LSF System <lsfadmin@n3g4-4>
+Subject: Job 508255: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy> Done
 
 Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
-Job was executed on host(s) <8*n2f1-7>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3g4-4>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
 </home/aagrawa8> was used as the home directory.
 </home/aagrawa8/topics> was used as the working directory.
-Started at Tue Sep 27 09:55:17 2016
-Results reported at Tue Sep 27 10:14:24 2016
+Started at Tue Sep 27 16:38:41 2016
+Results reported at Tue Sep 27 16:58:00 2016
 
 Your job looked like:
 
@@ -24,12 +24,12 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time   :   1148.92 sec.
-    Max Memory :       327 MB
-    Max Swap   :      1467 MB
+    CPU time   :   1155.01 sec.
+    Max Memory :       326 MB
+    Max Swap   :      1332 MB
 
     Max Processes  :         3
-    Max Threads    :        23
+    Max Threads    :        19
 
 The output (if any) is above this job summary.
 
@@ -37,5 +37,5 @@ The output (if any) is above this job summary.
 
 PS:
 
-Read file <./err/diy.err.505959> for stderr output of this job.
+Read file <./err/diy.err.508255> for stderr output of this job.
 
