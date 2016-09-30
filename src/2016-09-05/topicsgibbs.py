@@ -149,6 +149,7 @@ def main(*x, **r):
     # 1st r
     start_time = time.time()
     base = '/share/aagrawa8/Data/SE/'
+    #base = '/home/amrit/GITHUB/LDAClassification/results/SE/'
     path = os.path.join(base, 'svm_topics_smote', r['file'], str(r['term']))
     if not os.path.exists(path):
         os.makedirs(path)

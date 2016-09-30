@@ -161,7 +161,7 @@ def do_SVM(train_data, test_data, train_label, test_label):
 
 "cross validation"
 
-
+## this is 20% training, and 80% testing
 def cross_val(data=[], thres=[0.02, 0.05], folds=5,
               feature="tfidf", is_shingle="no_shingle", n_feature=1000, target=[]):
     "split for cross validation"
