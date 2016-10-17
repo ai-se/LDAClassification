@@ -1,0 +1,38 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n2g2-10>
+Subject: Job 439681: </share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE1> Exited
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE1> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n2g2-10>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/de1> was used as the working directory.
+Started at Sun Sep 18 23:06:15 2016
+Results reported at Sun Sep 18 23:28:06 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_words.py _test SE1
+------------------------------------------------------------
+
+Exited with exit code 137.
+
+Resource usage summary:
+
+    CPU time   :   1304.68 sec.
+    Max Memory :    125156 MB
+    Max Swap   :    156822 MB
+
+    Max Processes  :         3
+    Max Threads    :        23
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/SE1.err.439681> for stderr output of this job.
+

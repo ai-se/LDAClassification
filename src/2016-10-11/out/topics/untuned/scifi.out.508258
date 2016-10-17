@@ -1,0 +1,41 @@
+
+Total Runtime: --- 1345.47681904 seconds ---
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3g4-7>
+Subject: Job 508258: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi> Done
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3g4-7>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Tue Sep 27 16:58:25 2016
+Results reported at Tue Sep 27 17:20:58 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :   1349.73 sec.
+    Max Memory :       423 MB
+    Max Swap   :      1433 MB
+
+    Max Processes  :         3
+    Max Threads    :        19
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/scifi.err.508258> for stderr output of this job.
+

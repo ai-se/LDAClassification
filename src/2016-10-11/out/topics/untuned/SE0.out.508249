@@ -1,0 +1,41 @@
+
+Total Runtime: --- 479.321164131 seconds ---
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3l4-1>
+Subject: Job 508249: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE0> Done
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE0> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3l4-1>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Tue Sep 27 16:38:41 2016
+Results reported at Tue Sep 27 16:46:42 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE0
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :    482.65 sec.
+    Max Memory :       179 MB
+    Max Swap   :      1172 MB
+
+    Max Processes  :         3
+    Max Threads    :        19
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/SE0.err.508249> for stderr output of this job.
+

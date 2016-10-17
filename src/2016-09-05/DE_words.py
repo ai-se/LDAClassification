@@ -242,7 +242,7 @@ def _test(res=''):
     print(l)
     tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
     tf = tf_vectorizer.fit_transform(data_samples)
-    lda1 = lda.LDA(n_topics=l[0][0], alpha=l[0][1], eta=l[0][2], n_iter=100)
+    lda1 = lda.LDA(n_topics=int(l[0][0]), alpha=l[0][1], eta=l[0][2], n_iter=100)
     lda1.fit_transform(tf)
     tops = lda1.doc_topic_
     topic_word = lda1.topic_word_

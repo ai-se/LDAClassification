@@ -17,7 +17,7 @@ import sys
 sys.dont_write_bytecode = True
 
 __all__ = ['DE']
-Individual = collections.namedtuple('Individual', 'ind fit')
+Individual = collections.namedtuple('Individual', ['ind','fit1', 'fit2'])
 
 
 class DE(object):
@@ -33,12 +33,9 @@ class DE(object):
     def solve(self, fitness, initial_population, iterations=10, **r):
         current_generation = [Individual(ind, fitness(*ind, **r)) for ind in
                               initial_population]
-        dic={}
+        l=[]
         for i in current_generation:
-            if i.fit in dic.keys():
-                dic[i.fit].append(i.ind)
-            else:
-                dic[i.fit]=[i.ind]
+            l.append([i.ind,i.fit1,i.fit2])
         for _ in range(iterations):
             trial_generation = []
 
@@ -47,16 +44,13 @@ class DE(object):
                 trial_generation.append(Individual(v, fitness(*v, **r)))
 
             for x in trial_generation:
-                if x.fit in dic.keys():
-                    dic[x.fit].append(x.ind)
-                else:
-                    dic[x.fit]=[x.ind]
+                l.append([x.ind, x.fit1, x.fit2])
 
             current_generation = self._selection(current_generation,
                                                  trial_generation)
 
         best_index = self._get_best_index(current_generation)
-        return current_generation[best_index].ind, current_generation[best_index].fit, dic, current_generation
+        return current_generation[best_index].ind, [current_generation[best_index].fit1,current_generation[best_index].fit2], l
 
     def select3others(self,population):
         popu=copy.deepcopy(population)
@@ -86,7 +80,7 @@ class DE(object):
         generation = []
 
         for a, b in zip(current_generation, trial_generation):
-            if a.fit >= b.fit:
+            if (a.fit1+a.fit2) >= (b.fit1+b.fit2):
                 generation.append(a)
             else:
                 generation.append(b)
@@ -107,9 +101,9 @@ class DE(object):
         best = 0
 
         for i, x in enumerate(population):
-            if x.fit >= max_fitness:
+            if (x.fit1+x.fit2) >= max_fitness:
                 best = i
-                max_fitness = x.fit
+                max_fitness = x.fit1+x.fit2
         return best
 
     def _set_x(self, x):
@@ -208,10 +202,10 @@ def _topics(res=''):
     global bounds
     # stability score format dict, file,lab=score
     result={}
-    # parameter variations (k,a,b), format, dict, file,lab,each score=k,a,b
+    # parameter variations (k,a,b), format, list of lists, file,lab=[[k,a,b], Rn score, fscore]
     final_para_dic={}
-    # final generation, format dict, file,lab=parameter, score
-    final_current_dic={}
+    # final paras and scores, file, lab=[[k,a,b],[r, f1]]
+    bestone={}
     de = DE(F=0.7, CR=0.3, x='rand')
     temp1={}
     temp2={}
@@ -222,40 +216,25 @@ def _topics(res=''):
         #print(res+'\t'+str(lab))
         pop = [[random.randint(bounds[0][0], bounds[0][1]), random.uniform(bounds[1][0], bounds[1][1]),
                     random.uniform(bounds[2][0], bounds[2][1])]
-                   for _ in range(10)]
-        v, score,para_dict,gen = de.solve(main, pop, iterations=3, file=res, term=lab, data_samples=data_samples,target=labellist)
-        temp1[lab]=para_dict
-        temp2[lab]=gen
-        #print(v, '->', score)
-
+                   for _ in range(30)]
+        v, score, l = de.solve(main, pop, iterations=3, file=res, term=lab, data_samples=data_samples,target=labellist)
+        temp1[lab]=l
+        ##score is a list of [jaccard and fscore]
+        print(v, '->', score)
         temp3[lab]= score
+        temp2[lab] = [v,score]
     result[res] = temp3
     final_para_dic[res]=temp1
-    final_current_dic[res]=temp2
+    bestone[res]=temp2
+
     print(result)
-    print(final_current_dic)
     print(final_para_dic)
+    print(bestone)
     time1={}
-
-    ## Running the lda again with max score
-    l=final_para_dic[res][7][result[res][7]]
-    print(l)
-    tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
-    tf = tf_vectorizer.fit_transform(data_samples)
-    lda1 = lda.LDA(n_topics=int(l[0][0]), alpha=l[0][1], eta=l[0][2], n_iter=100)
-    lda1.fit_transform(tf)
-    tops = lda1.doc_topic_
-    topic_word = lda1.topic_word_
-    word1=[]
-    fscore={}
-    for i in range(len(data_samples)):
-        word1.append(topic_word[tops[i].argmax()])
-
-    fscore[res]=svmtopics.main(data=np.asarray(word1),file=res, target=labellist)
 
     # runtime,format dict, file,=runtime in secs
     time1[res] = time.time() - start_time
-    temp = [result, final_para_dic, time1,fscore]
+    temp = [result, final_para_dic, bestone,time1]
     with open('dump/DE_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(temp, handle)
     print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))
