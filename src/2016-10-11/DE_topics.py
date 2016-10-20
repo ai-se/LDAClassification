@@ -17,7 +17,7 @@ import sys
 sys.dont_write_bytecode = True
 
 __all__ = ['DE']
-Individual = collections.namedtuple('Individual', ['ind','fit1', 'fit2'])
+Individual = collections.namedtuple('Individual', 'ind fit1 fit2')
 
 
 class DE(object):
@@ -31,8 +31,11 @@ class DE(object):
     # TODO: add a fitness_aim param?
     # TODO: add a generic way to generate initial pop?
     def solve(self, fitness, initial_population, iterations=10, **r):
-        current_generation = [Individual(ind, fitness(*ind, **r)) for ind in
-                              initial_population]
+        current_generation=[]
+        for ind in initial_population:
+            a,b=fitness(*ind, **r)
+            current_generation.append(Individual(ind, a,b))
+
         l=[]
         for i in current_generation:
             l.append([i.ind,i.fit1,i.fit2])
@@ -41,7 +44,8 @@ class DE(object):
 
             for ind in current_generation:
                 v = self._extrapolate(ind,current_generation)
-                trial_generation.append(Individual(v, fitness(*v, **r)))
+                a1,b1=fitness(*v, **r)
+                trial_generation.append(Individual(v, a1,b1))
 
             for x in trial_generation:
                 l.append([x.ind, x.fit1, x.fit2])
@@ -216,7 +220,7 @@ def _topics(res=''):
         #print(res+'\t'+str(lab))
         pop = [[random.randint(bounds[0][0], bounds[0][1]), random.uniform(bounds[1][0], bounds[1][1]),
                     random.uniform(bounds[2][0], bounds[2][1])]
-                   for _ in range(30)]
+                   for _ in range(10)]
         v, score, l = de.solve(main, pop, iterations=3, file=res, term=lab, data_samples=data_samples,target=labellist)
         temp1[lab]=l
         ##score is a list of [jaccard and fscore]
@@ -240,17 +244,10 @@ def _topics(res=''):
     print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))
 
     ##untuned experiment
-    '''tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
-    tf = tf_vectorizer.fit_transform(data_samples)
-    tf_feature_names = tf_vectorizer.get_feature_names()
-    temp={}
+    '''temp={}
     l={}
     for j in [10,20,40,80,200]:
-        lda1 = lda.LDA(n_topics=j, alpha=0.1, eta=0.01, n_iter=200)
-
-        lda1.fit_transform(tf)
-        tops = lda1.doc_topic_
-        temp[j]=svmtopics.main(data=tops,file=res, target=labellist)
+        temp[j]=main(j,0.1,0.1,file=res, term=10, data_samples=data_samples,target=labellist)
     l[res]=temp
     with open('dump/untuned_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(l, handle)

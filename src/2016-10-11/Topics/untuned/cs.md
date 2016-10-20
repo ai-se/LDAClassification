@@ -1,0 +1,10 @@
+Topic 0: graph node tree nodes algorithm edges path vertices edge vertex 
+Topic 1: function lambda gt type functions following proof let alpha definition 
+Topic 2: like computer programming question algorithms understand know theory type data 
+Topic 3: machine turing state input language states tm set string problem 
+Topic 4: lt gt algorithm time array log int list number elements 
+Topic 5: problem np time polynomial complete set problems algorithm sat hard 
+Topic 6: language regular context free grammar string gt languages mid following 
+Topic 7: memory time process data bits cache does bit page address 
+Topic 8: amp problem number solution matrix algorithm possible time given example 
+Topic 9: algorithm set random points probability data like use distance number 

@@ -1,0 +1,46 @@
+0.403351519875
+0.241379310345
+0.286970010341
+0.579064587973
+0.28933680104
+
+Total Runtime: --- 5316.71020293 seconds ---
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3i1-5>
+Subject: Job 563501: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics cs> Done
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics cs> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3i1-5>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Wed Oct 19 22:20:02 2016
+Results reported at Wed Oct 19 23:48:40 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics cs
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :   5319.96 sec.
+    Max Memory :       232 MB
+    Max Swap   :       782 MB
+
+    Max Processes  :         3
+    Max Threads    :         4
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/cs.err.563501> for stderr output of this job.
+

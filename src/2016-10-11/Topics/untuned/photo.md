@@ -1,0 +1,10 @@
+Topic 0: photo white light like photos color look effect background picture 
+Topic 1: camera lens filter tripod like filters just ve use know 
+Topic 2: flash camera card canon use battery nikon using sd power 
+Topic 3: lens mm lenses canon nikon macro zoom camera ef af 
+Topic 4: photos lightroom images photo files way like want software using 
+Topic 5: raw image color images photoshop file jpeg using use lightroom 
+Topic 6: camera cameras canon like video dslr screen nikon digital com 
+Topic 7: photography like good photos want know photographer just people don 
+Topic 8: lens image sensor focal length does mm camera aperture light 
+Topic 9: camera focus shutter exposure iso mode aperture speed using light 

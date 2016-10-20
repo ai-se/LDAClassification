@@ -1,0 +1,10 @@
+Topic 0: chain bike gear wheel speed replac rear shimano derailleur hub 
+Topic 1: video use file like want camera record need tri clip 
+Topic 2: bike brake tire frame use wheel tube like look rim 
+Topic 3: algorithm problem set time number node point tree use given 
+Topic 4: problem time complex comput question function polynomi bound algorithm number 
+Topic 5: stream enabl game ffmpeg player file output bit messag time 
+Topic 6: graph problem set edg given number vertic question vertex complet 
+Topic 7: bike ride road use like cycl time look light commut 
+Topic 8: buddhist buddha buddhism medit like question practic peopl know mind 
+Topic 9: comput use question type program theori paper like model languag 

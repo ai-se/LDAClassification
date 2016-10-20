@@ -114,7 +114,7 @@ def readfile1(filename=''):
     return dict
 
 
-def _test_LDA(l, path1, file='',data_samples=[]):
+def _test_LDA(l, path1, file='',data_samples=[],target=[]):
     n_topics = 10
     n_top_words = 10
 
@@ -122,16 +122,20 @@ def _test_LDA(l, path1, file='',data_samples=[]):
     fileB.append(file)
     #filepath = '/home/amrit/GITHUB/Pits_lda/dataset/'
     topics=[]
-
+    data=data_samples
+    tar=target
+    x=list(xrange(len(data_samples)))
     for j, file1 in enumerate(fileB):
         for i in range(10):
             #data_samples = readfile1(filepath + str(file1))
 
             # shuffling the list
-            shuffle(data_samples)
+            shuffle(x)
+            data=[data[k] for k in x]
+            tar=[tar[k] for k in x]
 
             tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
-            tf = tf_vectorizer.fit_transform(data_samples)
+            tf = tf_vectorizer.fit_transform(data)
 
             lda1 = lda.LDA(n_topics=int(l[0]), alpha=l[1], eta=l[2],n_iter=200)
 
@@ -141,7 +145,7 @@ def _test_LDA(l, path1, file='',data_samples=[]):
 
             tf_feature_names = tf_vectorizer.get_feature_names()
             topics.extend(get_top_words(lda1, path1, tf_feature_names, n_top_words, i=i, file1=file1))
-    return topics,tops,topic_word,tf_feature_names
+    return topics,tops,topic_word,tf_feature_names,tar
 
 
 def main(*x, **r):
@@ -150,6 +154,7 @@ def main(*x, **r):
     base = '/share/aagrawa8/Data/SE/'
     #base = '/home/amrit/GITHUB/LDAClassification/results/SE/'
     path = os.path.join(base, 'svm_topics_smote', r['file'], str(r['term']))
+    #path = os.path.join(base, 'untuned_svm_topics_smote', r['file'], str(r['term']))
     if not os.path.exists(path):
         os.makedirs(path)
     l = np.asarray(x)
@@ -158,10 +163,10 @@ def main(*x, **r):
     with open(path1, "w") as f:
         f.truncate()
 
-    topics,tops,word,corpus = _test_LDA(l, path1, file=r['file'],data_samples=r['data_samples'])
+    topics,tops,word,corpus,tar = _test_LDA(l, path1, file=r['file'],data_samples=r['data_samples'],target=r['target'])
 
     top=[]
-    fscore = svmtopics.main(data=tops, file=r['file'], target=r['target'])
+    fscore = svmtopics.main(data=tops, file=r['file'], target=tar)
     print(np.median(fscore))
     for i in topics:
         temp=str(i.encode('ascii','ignore'))

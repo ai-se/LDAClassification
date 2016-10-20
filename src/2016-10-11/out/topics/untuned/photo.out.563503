@@ -1,0 +1,46 @@
+0.516470109801
+0.614218504966
+0.406083411728
+0.416666666667
+0.416495691424
+
+Total Runtime: --- 6068.07004881 seconds ---
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3i1-5>
+Subject: Job 563503: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics photo> Done
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics photo> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3i1-5>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Wed Oct 19 22:20:37 2016
+Results reported at Thu Oct 20 00:01:46 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics photo
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :   6072.23 sec.
+    Max Memory :       280 MB
+    Max Swap   :       831 MB
+
+    Max Processes  :         3
+    Max Threads    :         4
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/photo.err.563503> for stderr output of this job.
+

@@ -1,0 +1,10 @@
+Topic 0: entri set craft categori imag section field block page titl 
+Topic 1: robot amp use posit point measur map control valu angl 
+Topic 2: motor robot use control need like power sensor speed work 
+Topic 3: play game chess white black posit open player pawn piec 
+Topic 4: record famili inform new know birth born person marriag date 
+Topic 5: craft php http app site error local file com array 
+Topic 6: use like way want time need know look work make 
+Topic 7: use russian word mean differ like say question languag exampl 
+Topic 8: user field craft form plugin entri valu type set use 
+Topic 9: int serial use output control code pid arduino float motor

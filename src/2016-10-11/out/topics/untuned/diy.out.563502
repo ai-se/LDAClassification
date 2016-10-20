@@ -1,0 +1,46 @@
+0.481967213115
+0.488389237007
+0.60411311054
+0.601789709172
+0.635170603675
+
+Total Runtime: --- 7924.91940808 seconds ---
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3i1-4>
+Subject: Job 563502: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy> Done
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3i1-4>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Wed Oct 19 22:20:37 2016
+Results reported at Thu Oct 20 00:32:43 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :   7928.63 sec.
+    Max Memory :       319 MB
+    Max Swap   :       869 MB
+
+    Max Processes  :         3
+    Max Threads    :         4
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/diy.err.563502> for stderr output of this job.
+

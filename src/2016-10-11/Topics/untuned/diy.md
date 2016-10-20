@@ -1,0 +1,10 @@
+Topic 0: wall house roof insulation floor ceiling concrete basement walls attic 
+Topic 1: light switch wire wires fan lights black ceiling white box 
+Topic 2: floor wall tile concrete tiles just drywall flooring bathroom new 
+Topic 3: air heat furnace gas thermostat unit heating hot temperature house 
+Topic 4: water pipe drain sink hot valve shower pressure toilet tank 
+Topic 5: paint wood use like just ve using used http com 
+Topic 6: water house just problem ve years time like ago noticed 
+Topic 7: like house home room know ve need looking want windows 
+Topic 8: door wall like just use need hole screws drill screw 
+Topic 9: outlet breaker wire power box circuit panel amp cable ground 
