@@ -35,7 +35,7 @@ if __name__ == '__main__':
         for x in tuned[i][7]:
             raw.append(x[1])
             fscore.append(x[2])
-        
+
     #topics
     #topic=[79, 85, 79, 92,58,46,46,33,36,50]
     # words
