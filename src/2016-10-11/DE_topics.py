@@ -13,6 +13,7 @@ import operator
 import os, pickle
 import svmtopics
 import sys
+import numpy as np
 
 sys.dont_write_bytecode = True
 
@@ -46,9 +47,7 @@ class DE(object):
                 v = self._extrapolate(ind,current_generation)
                 a1,b1=fitness(*v, **r)
                 trial_generation.append(Individual(v, a1,b1))
-
-            for x in trial_generation:
-                l.append([x.ind, x.fit1, x.fit2])
+                l.append([v, a1,b1])
 
             current_generation = self._selection(current_generation,
                                                  trial_generation)
@@ -84,7 +83,7 @@ class DE(object):
         generation = []
 
         for a, b in zip(current_generation, trial_generation):
-            if (a.fit1+a.fit2) >= (b.fit1+b.fit2):
+            if (a.fit1+np.median(a.fit2)) >= (b.fit1+np.median(b.fit2)):
                 generation.append(a)
             else:
                 generation.append(b)
@@ -105,9 +104,9 @@ class DE(object):
         best = 0
 
         for i, x in enumerate(population):
-            if (x.fit1+x.fit2) >= max_fitness:
+            if (x.fit1+np.median(x.fit2)) >= max_fitness:
                 best = i
-                max_fitness = x.fit1+x.fit2
+                max_fitness = x.fit1+np.median(x.fit2)
         return best
 
     def _set_x(self, x):
@@ -203,7 +202,7 @@ def _topics(res=''):
     data_samples, labellist = readfile1(filepath + str(res)+'.txt')
     labels = [7]#[1, 2, 3, 4, 5, 6, 7, 8, 9]
     random.seed(1)
-    global bounds
+    '''global bounds
     # stability score format dict, file,lab=score
     result={}
     # parameter variations (k,a,b), format, list of lists, file,lab=[[k,a,b], Rn score, fscore]
@@ -241,17 +240,22 @@ def _topics(res=''):
     temp = [result, final_para_dic, bestone,time1]
     with open('dump/DE_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(temp, handle)
-    print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))'''
 
     ##untuned experiment
-    '''temp={}
+
     l={}
-    for j in [10,20,40,80,200]:
-        temp[j]=main(j,0.1,0.1,file=res, term=10, data_samples=data_samples,target=labellist)
-    l[res]=temp
+    temp1={}
+    ##with term = 7, 10
+    for i in [7,10]:
+        temp = {}
+        for j in [10,20,40,80,200]:
+            temp[j]=main(j,0.1,0.1,file=res, term=i, data_samples=data_samples,target=labellist)
+        temp1[i]=temp
+    [res]=temp1
     with open('dump/untuned_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(l, handle)
-    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))'''
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
 
 
 bounds = [(50, 100), (0.1, 1), (0.1, 1)]

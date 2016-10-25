@@ -176,4 +176,5 @@ def main(*x, **r):
     fo.write("\nScore: " + str(a))
     fo.write("\nRuntime: --- %s seconds ---\n" % (time.time() - start_time))
     fo.close()
-    return a,np.median(fscore)
+
+    return a,fscore
