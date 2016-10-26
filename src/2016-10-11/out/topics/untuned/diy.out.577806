@@ -1,0 +1,48 @@
+0.438144329897
+0.538981702466
+0.520911127707
+0.597850425437
+0.628803245436
+0.404467250226
+0.508798775822
+0.553535353535
+0.593735390369
+0.636079249218
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3i1-4>
+Subject: Job 577806: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy> Exited
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3i1-4>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Tue Oct 25 11:38:08 2016
+Results reported at Tue Oct 25 16:03:15 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time   :  15911.95 sec.
+    Max Memory :       319 MB
+    Max Swap   :       869 MB
+
+    Max Processes  :         3
+    Max Threads    :         4
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/diy.err.577806> for stderr output of this job.
+

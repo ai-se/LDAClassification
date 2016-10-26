@@ -167,7 +167,6 @@ def main(*x, **r):
 
     top=[]
     fscore = svmtopics.main(data=tops, file=r['file'], target=tar)
-    print(np.median(fscore))
     for i in topics:
         temp=str(i.encode('ascii','ignore'))
         top.append(temp)

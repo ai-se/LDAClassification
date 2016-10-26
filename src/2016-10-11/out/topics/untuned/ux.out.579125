@@ -1,0 +1,48 @@
+0.16056561385
+0.163214581607
+0.155831739962
+0.150022391402
+0.142495250158
+0.155588289449
+0.162305724966
+0.160322223977
+0.150498271304
+0.138027295285
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3l4-5>
+Subject: Job 579125: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics ux> Exited
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics ux> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3l4-5>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Tue Oct 25 14:37:05 2016
+Results reported at Tue Oct 25 20:33:36 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics ux
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time   :  21406.64 sec.
+    Max Memory :       283 MB
+    Max Swap   :       833 MB
+
+    Max Processes  :         3
+    Max Threads    :         4
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/ux.err.579125> for stderr output of this job.
+

@@ -1,0 +1,48 @@
+0.467080745342
+0.200486026731
+0.219240837696
+0.223985890653
+0.237268518519
+0.204836415363
+0.212827988338
+0.21609538003
+0.234098939929
+0.239190432383
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3l4-5>
+Subject: Job 577808: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics rpg> Exited
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics rpg> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3l4-5>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Tue Oct 25 11:38:38 2016
+Results reported at Tue Oct 25 18:04:55 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics rpg
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time   :  23191.04 sec.
+    Max Memory :       283 MB
+    Max Swap   :       834 MB
+
+    Max Processes  :         3
+    Max Threads    :         4
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/rpg.err.577808> for stderr output of this job.
+

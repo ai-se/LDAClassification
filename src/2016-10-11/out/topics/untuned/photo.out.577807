@@ -1,0 +1,48 @@
+0.321173671689
+0.464245600899
+0.421166306695
+0.414642047295
+0.392396232996
+0.353608847497
+0.592734225621
+0.621072982117
+0.641981885988
+0.406116409076
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3i1-5>
+Subject: Job 577807: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics photo> Exited
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics photo> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3i1-5>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Tue Oct 25 11:38:08 2016
+Results reported at Tue Oct 25 15:00:13 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics photo
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time   :  12129.12 sec.
+    Max Memory :       281 MB
+    Max Swap   :       831 MB
+
+    Max Processes  :         3
+    Max Threads    :         4
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/photo.err.577807> for stderr output of this job.
+

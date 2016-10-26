@@ -1,0 +1,48 @@
+0.611727799228
+0.735504141674
+0.843392630241
+0.883465108285
+0.863271712592
+0.625150276509
+0.765883376849
+0.881458966565
+0.859159779614
+0.865051903114
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n2g2-9>
+Subject: Job 577809: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi> Exited
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n2g2-9>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Tue Oct 25 11:38:38 2016
+Results reported at Tue Oct 25 16:05:43 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time   :  16023.65 sec.
+    Max Memory :       400 MB
+    Max Swap   :       949 MB
+
+    Max Processes  :         3
+    Max Threads    :         4
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/scifi.err.577809> for stderr output of this job.
+

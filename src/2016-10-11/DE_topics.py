@@ -252,7 +252,7 @@ def _topics(res=''):
         for j in [10,20,40,80,200]:
             temp[j]=main(j,0.1,0.1,file=res, term=i, data_samples=data_samples,target=labellist)
         temp1[i]=temp
-    [res]=temp1
+    l[res]=temp1
     with open('dump/untuned_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(l, handle)
     print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))

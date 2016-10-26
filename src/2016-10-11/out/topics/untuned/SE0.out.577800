@@ -1,0 +1,48 @@
+0.914876690533
+0.918448139351
+0.915605095541
+0.896495517522
+0.870646766169
+0.926493108729
+0.918124006359
+0.908018867925
+0.921584478577
+0.869205298013
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3l4-5>
+Subject: Job 577800: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE0> Exited
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE0> was submitted from host <login01.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3l4-5>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/topics> was used as the working directory.
+Started at Tue Oct 25 11:38:08 2016
+Results reported at Tue Oct 25 14:01:42 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE0
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time   :   8622.75 sec.
+    Max Memory :       175 MB
+    Max Swap   :       726 MB
+
+    Max Processes  :         3
+    Max Threads    :         4
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/SE0.err.577800> for stderr output of this job.
+
