@@ -214,8 +214,7 @@ def do_SVM(train_data, test_data, train_label, test_label,learner='',ker=''):
 "cross validation"
 
 
-def cross_val(corpus=[], targetlist=np.array([]), folds=5,
-               feature="tfidf",kernel=[], norm='l2norm',n_feature=4000):
+def cross_val(pos=np.array([]),neg=np.array([]),folds=5,kernel=[]):
     "split for cross validation"
 
     def cross_split(corpus, folds, index):
@@ -227,7 +226,7 @@ def cross_val(corpus=[], targetlist=np.array([]), folds=5,
                 i_minor.extend(range(int(i * l / folds), int((i + 1) * l / folds)))
             else:
                 i_major.extend(range(int(i * l / folds), int((i + 1) * l / folds)))
-        return corpus[i_minor], corpus[i_major]
+        return corpus[i_major], corpus[i_minor]
 
     "generate training set and testing set"
 
@@ -256,10 +255,6 @@ def cross_val(corpus=[], targetlist=np.array([]), folds=5,
 
         return data_train, data_test, label_train, label_test
 
-    data = make_feature(corpus,sel=feature,fea='tf',norm="l2row",n_features=n_feature)
-    split = split_two(corpus=data, label=targetlist)
-    pos = split['pos'].toarray()
-    neg = split['neg'].toarray()
     #print(pos)
     res={}
     for k in kernel:
@@ -333,9 +328,9 @@ def readfile_binary(filename='',thres=[0.02,0.07],pre='stem'):
 
 def _test(res=''):
 
-    #filepath = '/share/aagrawa8/Data/SE/'
+    filepath = '/share/aagrawa8/Data/SE/'
 
-    filepath = '/Users/amrit/GITHUB/LDAClassification/dataset/SE/'
+    #filepath = '/Users/amrit/GITHUB/LDAClassification/dataset/SE/'
 
     thres = [0.02, 0.05]
     issel=['tfidf','hash']
@@ -346,12 +341,18 @@ def _test(res=''):
 
 
     label, dict = readfile_binary(filename=filepath + res + '.txt', thres=thres)
+
+
+
     F_final = {}
     for filename in filenamelist:
         temp_file = {}
         for feature in issel:
-            temp_file[feature] =cross_val(corpus=dict, targetlist=label, folds=5,  kernel=ker, feature=feature,
-                                                   n_feature=4000)
+            data = make_feature(dict, sel=feature, fea='tf', norm="l2row", n_features=4000)
+            split = split_two(corpus=data, label=label)
+            pos = split['pos'].toarray()
+            neg = split['neg'].toarray()
+            temp_file[feature] =cross_val(pos=pos,neg=neg, folds=5,  kernel=ker)
         F_final[filename] = temp_file
 
     with open('dump/'+res+'_kernels_features.pickle', 'wb') as handle:
