@@ -129,7 +129,7 @@ def _test_LDA(l, path1, file='',data_samples=[]):
             #data_samples = readfile1(filepath + str(file1))
 
             # shuffling the list
-            #shuffle(data_samples)
+            shuffle(data_samples)
 
             tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
             tf = tf_vectorizer.fit_transform(data_samples)
@@ -141,7 +141,7 @@ def _test_LDA(l, path1, file='',data_samples=[]):
             topic_word = lda1.topic_word_
 
             tf_feature_names = tf_vectorizer.get_feature_names()
-            #topics.extend(get_top_words(lda1, path1, tf_feature_names, n_top_words, i=i, file1=file1))
+            topics.extend(get_top_words(lda1, path1, tf_feature_names, n_top_words, i=i, file1=file1))
     return topics,tops,topic_word,tf_feature_names
 
 
@@ -165,14 +165,14 @@ def main(*x, **r):
 
 
     top=[]
-    fscore = svmtopics.main(data=tops, file=r['file'], target=r['target'])
-    print(np.median(fscore))
-    '''for i in topics:
+    #fscore = svmtopics.main(data=tops, file=r['file'], target=r['target'])
+    #print(np.median(fscore))
+    for i in topics:
         temp=str(i.encode('ascii','ignore'))
         top.append(temp)
-    a = jaccard(b, score_topics=top, term=r['term'])'''
+    a = jaccard(b, score_topics=top, term=r['term'])
     fo = open(path1, 'a+')
     #fo.write("\nScore: " + str(a))
     fo.write("\nRuntime: --- %s seconds ---\n" % (time.time() - start_time))
     fo.close()
-    return np.median(fscore)
+    return a

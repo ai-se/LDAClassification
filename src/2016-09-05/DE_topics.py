@@ -225,15 +225,15 @@ def _topics(res=''):
                    for _ in range(10)]
         v, score,para_dict,gen = de.solve(main, pop, iterations=3, file=res, term=lab, data_samples=data_samples,target=labellist)
         temp1[lab]=para_dict
-        temp2[lab]=gen
+        #temp2[lab]=gen
         #print(v, '->', score)
 
         temp3[lab]= score
     result[res] = temp3
     final_para_dic[res]=temp1
-    final_current_dic[res]=temp2
+    #final_current_dic[res]=temp2
     print(result)
-    print(final_current_dic)
+    #print(final_current_dic)
     print(final_para_dic)
     time1={}
 
@@ -245,13 +245,8 @@ def _topics(res=''):
     lda1 = lda.LDA(n_topics=int(l[0][0]), alpha=l[0][1], eta=l[0][2], n_iter=100)
     lda1.fit_transform(tf)
     tops = lda1.doc_topic_
-    topic_word = lda1.topic_word_
-    word1=[]
     fscore={}
-    for i in range(len(data_samples)):
-        word1.append(topic_word[tops[i].argmax()])
-
-    fscore[res]=svmtopics.main(data=np.asarray(word1),file=res, target=labellist)
+    fscore[res]=svmtopics.main(data=tops,file=res, target=labellist)
 
     # runtime,format dict, file,=runtime in secs
     time1[res] = time.time() - start_time

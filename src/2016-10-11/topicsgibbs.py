@@ -166,7 +166,7 @@ def main(*x, **r):
     topics,tops,word,corpus,tar = _test_LDA(l, path1, file=r['file'],data_samples=r['data_samples'],target=r['target'])
 
     top=[]
-    fscore = svmtopics.main(data=tops, file=r['file'], target=tar)
+    fscore = svmtopics.main(data=tops, file=r['file'], target=tar,tune=r['tune'])
     for i in topics:
         temp=str(i.encode('ascii','ignore'))
         top.append(temp)

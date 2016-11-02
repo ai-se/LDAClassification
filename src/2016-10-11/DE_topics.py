@@ -161,35 +161,39 @@ def cmd(com="demo('-h')"):
     words = map(wrap, map(atom, sys.argv[2:]))
     return sys.argv[1] + '(' + ','.join(words) + ')'
 
-def readfile1(filename=''):
-    dict = []
-    labellst = []
-
-    with open(filename, 'r') as f:
+"Load data from file to list of lists"
+def readfile1(filename='',thres=[0.02,0.07]):
+    dict=[]
+    label=[]
+    targetlabel=[]
+    with open(filename,'r') as f:
         for doc in f.readlines():
             try:
-                row = doc.lower().split('>>>')[0].strip()
-                label = doc.lower().strip().split(' >>> ')[1].split()[0]
-                labellst.append(label)
+                row = doc.lower().split(' >>> ')[0].strip()
+                label.append(doc.lower().split(' >>> ')[1].split()[0])
                 dict.append(row)
             except:
                 pass
-    return dict, labellst
+    labellst=Counter(label)
+    n=sum(labellst.values())
+    while True:
+        for l in labellst:
+            if labellst[l]>n*thres[0] and labellst[l]<n*thres[1]:
+                targetlabel=l
+                break
+        if targetlabel:
+            break
+        thres[1]=2*thres[1]
+        thres[0]=0.5*thres[0]
 
-def readfile(filename=''):
-    dict = []
-    labellst = []
-
-    with open(filename, 'r') as f:
-        for doc in f.readlines():
-            try:
-                row = doc.lower().split('\t')[1].strip()
-                label = doc.lower().strip().split('\t')[0]
-                labellst.append(label)
-                dict.append(row)
-            except:
-                pass
-    return dict, labellst
+    for i,l in enumerate(label):
+        if l == targetlabel:
+            label[i]='pos'
+        else:
+            label[i]='neg'
+    label=np.array(label)
+    print("Target Label: %s" %targetlabel)
+    return dict, label
 
 def _topics(res=''):
     #fileB = ['pitsA', 'pitsB', 'pitsC', 'pitsD', 'pitsE', 'pitsF', 'processed_citemap.txt']
@@ -200,9 +204,12 @@ def _topics(res=''):
 
 
     data_samples, labellist = readfile1(filepath + str(res)+'.txt')
+    cut=int(len(data_samples)*80/100)
+    data_train, train_label=data_samples[:cut],labellist[:cut]
+    data_test, test_label = data_samples[cut:], labellist[cut:]
     labels = [7]#[1, 2, 3, 4, 5, 6, 7, 8, 9]
     random.seed(1)
-    '''global bounds
+    global bounds
     # stability score format dict, file,lab=score
     result={}
     # parameter variations (k,a,b), format, list of lists, file,lab=[[k,a,b], Rn score, fscore]
@@ -220,7 +227,7 @@ def _topics(res=''):
         pop = [[random.randint(bounds[0][0], bounds[0][1]), random.uniform(bounds[1][0], bounds[1][1]),
                     random.uniform(bounds[2][0], bounds[2][1])]
                    for _ in range(10)]
-        v, score, l = de.solve(main, pop, iterations=3, file=res, term=lab, data_samples=data_samples,target=labellist)
+        v, score, l = de.solve(main, pop, iterations=1, file=res, term=lab, data_samples=data_train,target=train_label,tune='yes')
         temp1[lab]=l
         ##score is a list of [jaccard and fscore]
         print(v, '->', score)
@@ -237,28 +244,38 @@ def _topics(res=''):
 
     # runtime,format dict, file,=runtime in secs
     time1[res] = time.time() - start_time
-    temp = [result, final_para_dic, bestone,time1]
+    l=final_para_dic[res][7][result[res][7]]
+    print(l)
+    tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
+    tf = tf_vectorizer.fit_transform(data_samples)
+    lda1 = lda.LDA(n_topics=int(l[0][0]), alpha=l[0][1], eta=l[0][2], n_iter=100)
+    lda1.fit_transform(tf)
+    tops = lda1.doc_topic_
+    fscore = {}
+    fscore[res] = svmtopics.main(data=tops, file=res, target=labellist,tune='no')
+    print(fscore)
+    temp = [result, final_para_dic, bestone,time1,fscore]
     with open('dump/DE_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(temp, handle)
-    print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))'''
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))
 
     ##untuned experiment
 
-    l={}
+    '''l={}
     temp1={}
     ##with term = 7, 10
     for i in [7,10]:
         temp = {}
         for j in [10,20,40,80,200]:
-            temp[j]=main(j,0.1,0.1,file=res, term=i, data_samples=data_samples,target=labellist)
+            temp[j]=main(j,0.1,0.01,file=res, term=i, data_samples=data_samples,target=labellist)
         temp1[i]=temp
     l[res]=temp1
     with open('dump/untuned_class_topics_'+res+'.pickle', 'wb') as handle:
         pickle.dump(l, handle)
-    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))'''
 
 
-bounds = [(50, 100), (0.1, 1), (0.1, 1)]
+bounds = [(50, 200), (0.1, 1), (0.01, 1)]
 max_fitness = 0
 if __name__ == '__main__':
     eval(cmd())

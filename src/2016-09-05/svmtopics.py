@@ -298,8 +298,8 @@ def _test(data=[],file='', targetlist=[]):
 
     ##tuned
     #print(temp_file)
-    with open('dump/' + file + '_tuned_fscore_topics.pickle', 'wb') as handle:
-        pickle.dump(F_final, handle)
+    #with open('dump/' + file + '_tuned_fscore_topics.pickle', 'wb') as handle:
+    #    pickle.dump(F_final, handle)
     return temp_file
 
 #SE0: Counter({'no': 6008, 'yes': 309})
