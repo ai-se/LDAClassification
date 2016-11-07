@@ -159,9 +159,9 @@ def cross_val(data=[],  folds=5, target=[],tune='on'):
 
     "generate training set and testing set"
 
-    def tune_train_test(pos, neg, folds, index, issmote="no_smote", neighbors=5):
-        pos_train, pos_test = cross_split(pos, folds=folds, index=index)
-        neg_train, neg_test = cross_split(neg, folds=folds, index=index)
+    def tune_train_test(pos, neg, folds, index, neighbors=5):
+        pos_train, pos_test = cross_split(pos, folds=5, index=index)
+        neg_train, neg_test = cross_split(neg, folds=5, index=index)
 
         ##smoting
         num = int((len(pos_train) + len(neg_train)) / 2)
@@ -219,7 +219,6 @@ def cross_val(data=[],  folds=5, target=[],tune='on'):
     #data = normalize(data, norm='l2')
     #data=data*100
 
-    #print(data, label)
     if tune=='on':
         split = split_two(corpus=data, label=target)
         pos = split['pos']
@@ -235,7 +234,7 @@ def cross_val(data=[],  folds=5, target=[],tune='on'):
             neg = neg[tmp]
             for index in range(folds):
                 data_train, data_test, label_train, label_test = \
-                    tune_train_test(pos, neg, folds=folds, index=index, issmote="no_smote", neighbors=5)
+                    tune_train_test(pos, neg, folds=folds, index=index, neighbors=5)
                 "SVM"
                 result.append(do_SVM(data_train, data_test, label_train, label_test))
         return result
@@ -249,7 +248,7 @@ def cross_val(data=[],  folds=5, target=[],tune='on'):
 
 def _test(data=[],file='', targetlist=[],tune=''):
 
-    return cross_val(data=data,folds=5,target=targetlist,tune=tune)
+    return np.median(cross_val(data=data,folds=1,target=targetlist,tune=tune))
 
 #SE0: Counter({'no': 6008, 'yes': 309})
 #SE1  Counter({'no': 47201, 'yes': 1441})

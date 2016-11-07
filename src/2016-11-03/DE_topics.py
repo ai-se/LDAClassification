@@ -213,66 +213,67 @@ def _topics(res=''):
     start_time = time.time()
     #filepath='/Users/amrit/GITHUB/LDAClassification/dataset/SE/'
 
-
-    data_samples, labellist = readfile1(filepath + str(res)+'.txt')
-    split = split_two(corpus=data_samples, label=labellist)
-    pos = split['pos']
-    neg = split['neg']
-    cut_pos=int(len(pos)*80/100)
-    cut_neg = int(len(neg) * 80 / 100)
-    data_train, train_label=pos[:cut_pos]+neg[:cut_neg],['pos']*cut_pos + ['neg']*cut_neg
-    data_test, test_label = pos[cut_pos:]+neg[cut_neg:], ['pos']*(len(pos)-cut_pos) + ['neg']*(len(neg)-cut_neg)
-    labels = [7]#[1, 2, 3, 4, 5, 6, 7, 8, 9]
     random.seed(1)
     global bounds
-    # stability score format dict, file,lab=score
-    result={}
-    # parameter variations (k,a,b), format, list of lists, file,lab=[[k,a,b], Rn score, fscore]
-    final_para_dic={}
-    # final paras and scores, file, lab=[[k,a,b],[r, f1]]
-    bestone={}
-    de = DE(F=0.7, CR=0.3, x='rand')
-    temp1={}
-    temp2={}
-    temp3={}
-    for lab in labels:
+    cross_tune='no'
+    grow_oracle='yes'
+    data_samples, labellist = readfile1(filepath + str(res)+'.txt')
+    split = split_two(corpus=data_samples, label=labellist)
+    pos = np.array(split['pos'])
+    neg = np.array(split['neg'])
+    cut_pos = int(len(pos) * 80 / 100)
+    cut_neg = int(len(neg) * 80 / 100)
+    ##list of f2 scores
+    lis=[]
+    #dictionary containing bestone, time for 1 run, f2
+    cross={}
+    #dictionary containing cross, lis,full time
+    file={}
+    for folds in range(5):
+        start_time1 = time.time()
+        pos_shuffle = range(0, len(pos))
+        neg_shuffle=range(0, len(neg))
+        shuffle(pos_shuffle)
+        shuffle(neg_shuffle)
+        pos=pos[pos_shuffle]
+        neg=neg[neg_shuffle]
+
+        data_train, train_label=list(pos)[:cut_pos]+list(neg)[:cut_neg],['pos']*cut_pos + ['neg']*cut_neg
+        data_test, test_label = list(pos)[cut_pos:]+list(neg)[cut_neg:], ['pos']*(len(pos)-cut_pos) + ['neg']*(len(neg)-cut_neg)
+
+        # stability score format dict, file,lab=score
+        # parameter variations (k,a,b), format, list of lists, file,lab=[[k,a,b], Rn score, fscore]
+        #final_para_dic={}
+        # final paras and scores, file, lab=[[k,a,b],[r, f1]]
+        de = DE(F=0.7, CR=0.3, x='rand')
+
         global max_fitness
         max_fitness = 0
-        #print(res+'\t'+str(lab))
         pop = [[random.randint(bounds[0][0], bounds[0][1]), random.uniform(bounds[1][0], bounds[1][1]),
-                    random.uniform(bounds[2][0], bounds[2][1])]
-                   for _ in range(10)]
-        v, score, l = de.solve(main, pop, iterations=5, file=res, term=lab, data_samples=data_train,target=train_label,tune='yes')
-        temp1[lab]=l
+                        random.uniform(bounds[2][0], bounds[2][1])]
+                       for _ in range(10)]
+        v, score, final_para_dic = de.solve(main, pop, iterations=2, file=res, term=7, data_samples=data_train,target=train_label,tune='yes')
         ##score is a list of [jaccard and fscore]
-        print(v, '->', score)
-        temp3[lab]= score
-        temp2[lab] = [v,score]
-    result[res] = temp3
-    final_para_dic[res]=temp1
-    bestone[res]=temp2
+        bestone = [v,score]
+        # runtime,format dict, file,=runtime in secs
+        l=bestone
+        tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
+        tf = tf_vectorizer.fit_transform(data_train+data_test)
+        lda1 = lda.LDA(n_topics=int(l[0][0]), alpha=l[0][1], eta=l[0][2], n_iter=200)
+        lda1.fit_transform(tf)
+        tops = lda1.doc_topic_
+        f2=svmtopics.main(data=tops, file=res, target=train_label+test_label,tune='no')
+        lis.append(f2)
+        time2 = time.time() - start_time1
+        cross[folds] = [ bestone,time2,f2]
+        print([bestone,time2,f2])
+        print("\nRuntime for 1 loop of DE termination: --- %s seconds ---\n" % (time2))
+    time1=time.time() - start_time
+    file[res]=[cross,lis,time1]
+    print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
+    with open('dump/DE_log_tune_grow_oracle'+res+'.pickle', 'wb') as handle:
+        pickle.dump(file, handle)
 
-    print(result)
-    print(bestone)
-    print(final_para_dic)
-    time1={}
-
-    # runtime,format dict, file,=runtime in secs
-    time1[res] = time.time() - start_time
-    l=bestone[res][7]
-    print(l)
-    tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
-    tf = tf_vectorizer.fit_transform(data_train+data_test)
-    lda1 = lda.LDA(n_topics=int(l[0][0]), alpha=l[0][1], eta=l[0][2], n_iter=200)
-    lda1.fit_transform(tf)
-    tops = lda1.doc_topic_
-    fscore = {}
-    fscore[res] = svmtopics.main(data=tops, file=res, target=train_label+test_label,tune='no')
-    print(fscore)
-    temp = [result, final_para_dic, bestone,time1,fscore]
-    with open('dump/DE_class_topics_'+res+'.pickle', 'wb') as handle:
-        pickle.dump(temp, handle)
-    print("\nTotal Runtime: --- %s seconds ---\n" % (time1[res]))
 
     ##untuned experiment
 
@@ -290,7 +291,7 @@ def _topics(res=''):
     print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))'''
 
 
-bounds = [(50, 200), (0.1, 1), (0.01, 1)]
+bounds = [(70, 150), (0.1, 1), (0.01, 1)]
 max_fitness = 0
 if __name__ == '__main__':
     eval(cmd())
