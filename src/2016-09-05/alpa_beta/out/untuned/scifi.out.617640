@@ -1,0 +1,45 @@
+{'scifi': {7: 0.5555555555555556}}
+{'scifi': {7: {0.4444444444444444: [[100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01]], 0.3333333333333333: [[100, 0.1, 0.01]], 0.5555555555555556: [[100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01]]}}}
+
+Total Runtime: --- 56467.9111252 seconds ---
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n2l5-4>
+Subject: Job 617640: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi> Done
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi> was submitted from host <login04.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <3*n2l5-4>, in queue <single_chassis>, as user <aagrawa8> in cluster <henry2>.
+                            <4*n2l4-7>
+                            <1*n2l4-14>
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/de1> was used as the working directory.
+Started at Tue Nov  8 17:39:17 2016
+Results reported at Wed Nov  9 09:20:28 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :  56476.71 sec.
+    Max Memory :       301 MB
+    Max Swap   :      1176 MB
+
+    Max Processes  :         3
+    Max Threads    :        15
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/scifi.err.617640> for stderr output of this job.
+

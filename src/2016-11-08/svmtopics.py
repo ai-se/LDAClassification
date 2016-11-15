@@ -15,7 +15,6 @@ from ABCD import ABCD
 
 
 def main(*x,**r):
-    print(np.array(r['data']))
     #print(np.array(x))
     return _test(data=np.multiply(np.array(r['data']),np.array(x)),  targetlist=r['target'],tune=r['tune'],perc=r['percentage']),0
 

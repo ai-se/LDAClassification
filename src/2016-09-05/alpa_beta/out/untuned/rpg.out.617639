@@ -1,0 +1,44 @@
+{'rpg': {7: 0.4444444444444444}}
+{'rpg': {7: {0.4444444444444444: [[100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01]], 0.3333333333333333: [[100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01], [100, 0.1, 0.01]]}}}
+
+Total Runtime: --- 42072.5738471 seconds ---
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n2l5-12>
+Subject: Job 617639: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics rpg> Done
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics rpg> was submitted from host <login04.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <6*n2l5-12>, in queue <single_chassis>, as user <aagrawa8> in cluster <henry2>.
+                            <2*n2l6-13>
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/de1> was used as the working directory.
+Started at Tue Nov  8 17:39:17 2016
+Results reported at Wed Nov  9 05:20:31 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics rpg
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :  42080.01 sec.
+    Max Memory :       226 MB
+    Max Swap   :      1103 MB
+
+    Max Processes  :         3
+    Max Threads    :        15
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/rpg.err.617639> for stderr output of this job.
+

@@ -1,0 +1,40 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3m2-2>
+Subject: Job 617645: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE8> Exited
+
+Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE8> was submitted from host <login04.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <7*n3m2-2>, in queue <single_chassis>, as user <aagrawa8> in cluster <henry2>.
+                            <1*n3m2-4>
+</home/aagrawa8> was used as the home directory.
+</home/aagrawa8/de1> was used as the working directory.
+Started at Tue Nov  8 17:39:17 2016
+Results reported at Sat Nov 12 04:59:27 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE8
+------------------------------------------------------------
+
+TERM_RUNLIMIT: job killed after reaching LSF run time limit.
+Exited with exit code 140.
+
+Resource usage summary:
+
+    CPU time   : 300146.31 sec.
+    Max Memory :       512 MB
+    Max Swap   :      1251 MB
+
+    Max Processes  :         3
+    Max Threads    :        11
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <./err/SE8.err.617645> for stderr output of this job.
+

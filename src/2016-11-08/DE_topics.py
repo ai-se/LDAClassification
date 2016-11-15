@@ -203,7 +203,7 @@ def _topics(res=''):
     pos = np.array(split['pos'])
     neg = np.array(split['neg'])
 
-    cut_pos, cut_neg = cut_position(pos, neg, percentage=60)
+    cut_pos, cut_neg = cut_position(pos, neg, percentage=40)
     ##list of f2 scores
     untuned_lis = []
     tuned_lis = []
@@ -245,8 +245,8 @@ def _topics(res=''):
 
         # l2 normalization
         tops = lda1.doc_topic_
-        tops = csr_matrix(tops)
-        tops = l2normalize(tops).toarray()
+        #tops = csr_matrix(tops)
+        #tops = l2normalize(tops).toarray()
 
         split = split_two(corpus=tops, label=np.array(train_label + test_label))
         pos1 = np.array(split['pos'])
@@ -271,7 +271,6 @@ def _topics(res=''):
         time2 = time.time() - start_time1
         bestone.append(time2)
         start_time2 = time.time()
-        print(f21)
 
         ## Another DE to find the magic weights
         max_fitness = 0
@@ -285,7 +284,6 @@ def _topics(res=''):
 
         #testing the modified features.
         f22 = svmtopics.main(*v, data=data_train+data_test, target=train_label + test_label, tune='no',percentage=perc)
-        print(f22)
         time3 = time.time() - start_time2
         bestone1.append(time3)
         tuned_lis.append(f22)
@@ -296,7 +294,7 @@ def _topics(res=''):
     file[res] = [cross, untuned_lis, tuned_lis, time1]
     print(file[res])
     print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
-    with open('dump/DE_log_tune_grow_oracle' + res + '.pickle', 'wb') as handle:
+    with open('dump/DE_magic_weights_' + res + '.pickle', 'wb') as handle:
         pickle.dump(file, handle)
 
 
