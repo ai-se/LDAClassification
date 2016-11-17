@@ -23,7 +23,7 @@ if __name__ == '__main__':
             with open(a, 'rb') as handle:
                 F_final = pickle.load(handle)
                 F_final1 = dict(F_final1.items() + F_final.items())
-    #print(F_final1)
+    print(F_final1)
 
     font = {
         'size': 60}
@@ -44,7 +44,6 @@ if __name__ == '__main__':
 
     for file1 in fileB:
         l=[]
-        print(F_final1[file1][1])
         for i in F_final1[file1][2]:
             l.append(i[0])
         Y_tuned.append(np.median(l))
