@@ -203,7 +203,7 @@ def _topics(res=''):
     pos = np.array(split['pos'])
     neg = np.array(split['neg'])
 
-    cut_pos, cut_neg = cut_position(pos, neg, percentage=40)
+    cut_pos, cut_neg = cut_position(pos, neg, percentage=10)
     ##list of f2 scores
     untuned_lis = []
     tuned_lis = []
@@ -277,7 +277,7 @@ def _topics(res=''):
         pop = [[random.uniform(bound[0][0], bound[0][1]) for _ in range(weight_length)]
                for _ in range(10)]
         perc1 = (len(train_label) + len(grow_label) / 2) * 100 / len(train_label + grow_label)
-        v, score, final_para_dic = de.solve(svmtopics.main, pop, iterations=3, bounds=new_bounds,
+        v, score, final_para_dic = de.solve(svmtopics.main, pop, iterations=6, bounds=new_bounds,
                                             data=data_train + data_grow, target=train_label + grow_label,
                                             tune='no', percentage=perc1)
         bestone1 = [v, score]
@@ -298,8 +298,8 @@ def _topics(res=''):
         pickle.dump(file, handle)
 
 
-bound = [(0.1, 2)]
-bounds = [(70, 150), (0.1, 1), (0.01, 1)]
+bound = [(1, 3)]
+bounds = [(50, 100), (0.1, 1), (0.01, 1)]
 max_fitness = 0
 if __name__ == '__main__':
     eval(cmd())
