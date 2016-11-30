@@ -29,31 +29,6 @@ Target Label: doctor-who
 6254 6254
 6254 6254
 6254 6254
-7818 7818
-[[[131, 0.786238804427498, 0.9085625064469703], [1.0, 0.6207366984993179]], 15653.131659030914, 0.625]
-
-Runtime for 1 loop of DE termination: --- 15653.131659 seconds ---
-
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
-6254 6254
 6254 6254
 6254 6254
 6254 6254
@@ -65,10 +40,20 @@ Runtime for 1 loop of DE termination: --- 15653.131659 seconds ---
 6254 6254
 6254 6254
 7818 7818
-[[[121, 0.9348022722235307, 0.9193413422324184], [1.0, 0.625]], 15441.182574987411, 0.68126520681265201]
+7818 7818
 
-Runtime for 1 loop of DE termination: --- 15441.182575 seconds ---
+Runtime for 1 loop of DE termination: --- 2965.93108296 seconds ---
 
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
 6254 6254
 6254 6254
 6254 6254
@@ -100,10 +85,20 @@ Runtime for 1 loop of DE termination: --- 15441.182575 seconds ---
 6254 6254
 6254 6254
 7818 7818
-[[[109.1, 0.21161158238907873, 1], [1.0, 0.82978723404255328]], 17168.354903936386, 0.80519480519480502]
+7818 7818
 
-Runtime for 1 loop of DE termination: --- 17168.3549039 seconds ---
+Runtime for 1 loop of DE termination: --- 3403.18090105 seconds ---
 
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
 6254 6254
 6254 6254
 6254 6254
@@ -135,10 +130,20 @@ Runtime for 1 loop of DE termination: --- 17168.3549039 seconds ---
 6254 6254
 6254 6254
 7818 7818
-[[[80.7, 0.14323254015767423, 0.7312803772559391], [0.75, 0.89314194577352468]], 18987.88377404213, 0.86363636363636376]
+7818 7818
 
-Runtime for 1 loop of DE termination: --- 18987.883774 seconds ---
+Runtime for 1 loop of DE termination: --- 2945.39148998 seconds ---
 
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
 6254 6254
 6254 6254
 6254 6254
@@ -170,24 +175,71 @@ Runtime for 1 loop of DE termination: --- 18987.883774 seconds ---
 6254 6254
 6254 6254
 7818 7818
-[[[150, 0.2656647615236077, 0.7376001225594495], [1.0, 0.64495530012771385]], 18754.55832695961, 0.64317673378076057]
+7818 7818
 
-Runtime for 1 loop of DE termination: --- 18754.558327 seconds ---
+Runtime for 1 loop of DE termination: --- 3560.32228589 seconds ---
 
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+6254 6254
+7818 7818
+7818 7818
 
-Total Runtime: --- 86005.416467 seconds ---
+Runtime for 1 loop of DE termination: --- 3379.34140015 seconds ---
+
+[0.88590604026845632, 0.8803763440860215, 0.86461126005361932, 0.8541392904073587, 0.89121887287024892]
+[0.79102715466351825, 0.70512820512820518, 0.73237885462555063, 0.71428571428571419, 0.70030895983522146]
+
+Total Runtime: --- 16254.478333 seconds ---
 
 
 ------------------------------------------------------------
-Sender: LSF System <lsfadmin@n3l4-1>
-Subject: Job 612130: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi> Done
+Sender: LSF System <lsfadmin@n2g2-11>
+Subject: Job 660029: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi> Done
 
 Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics scifi> was submitted from host <login04.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
-Job was executed on host(s) <8*n3l4-1>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n2g2-11>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
 </home/aagrawa8> was used as the home directory.
 </home/aagrawa8/topics_de> was used as the working directory.
-Started at Fri Nov  4 12:20:57 2016
-Results reported at Sat Nov  5 12:14:24 2016
+Started at Mon Nov 28 13:18:37 2016
+Results reported at Mon Nov 28 17:49:34 2016
 
 Your job looked like:
 
@@ -200,12 +252,12 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time   :  86062.16 sec.
-    Max Memory :       562 MB
-    Max Swap   :      1573 MB
+    CPU time   :  16257.59 sec.
+    Max Memory :       620 MB
+    Max Swap   :      1764 MB
 
     Max Processes  :         3
-    Max Threads    :        19
+    Max Threads    :        23
 
 The output (if any) is above this job summary.
 
@@ -213,5 +265,5 @@ The output (if any) is above this job summary.
 
 PS:
 
-Read file <./err/scifi.err.612130> for stderr output of this job.
+Read file <./err/scifi.err.660029> for stderr output of this job.
 

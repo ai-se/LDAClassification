@@ -29,31 +29,6 @@ Target Label: computability
 2966 2966
 2966 2966
 2966 2966
-3708 3708
-[[[89, 0.5228947541073846, 0.460374716774128], [0.5, 0.64102564102564097]], 7711.550457000732, 0.5580357142857143]
-
-Runtime for 1 loop of DE termination: --- 7711.550457 seconds ---
-
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
-2966 2966
 2966 2966
 2966 2966
 2966 2966
@@ -65,10 +40,20 @@ Runtime for 1 loop of DE termination: --- 7711.550457 seconds ---
 2966 2966
 2966 2966
 3708 3708
-[[[120.1, 0.29966147154114925, 0.8889754174900892], [0.75, 0.5844155844155845]], 7554.562304973602, 0.51383399209486169]
+3708 3708
 
-Runtime for 1 loop of DE termination: --- 7554.56230497 seconds ---
+Runtime for 1 loop of DE termination: --- 2696.32748318 seconds ---
 
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
 2966 2966
 2966 2966
 2966 2966
@@ -100,10 +85,20 @@ Runtime for 1 loop of DE termination: --- 7554.56230497 seconds ---
 2966 2966
 2966 2966
 3708 3708
-[[[129, 0.2725793001763192, 0.997100181804948], [0.75, 0.63888888888888895]], 6978.088127851486, 0.52391799544419138]
+3708 3708
 
-Runtime for 1 loop of DE termination: --- 6978.08812785 seconds ---
+Runtime for 1 loop of DE termination: --- 2495.87586284 seconds ---
 
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
 2966 2966
 2966 2966
 2966 2966
@@ -135,10 +130,20 @@ Runtime for 1 loop of DE termination: --- 6978.08812785 seconds ---
 2966 2966
 2966 2966
 3708 3708
-[[[150, 0.9818874305119129, 0.9397372448265949], [0.75, 0.42216358839050128]], 7897.849547147751, 0.3930131004366812]
+3708 3708
 
-Runtime for 1 loop of DE termination: --- 7897.84954715 seconds ---
+Runtime for 1 loop of DE termination: --- 2909.89947081 seconds ---
 
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
 2966 2966
 2966 2966
 2966 2966
@@ -170,24 +175,71 @@ Runtime for 1 loop of DE termination: --- 7897.84954715 seconds ---
 2966 2966
 2966 2966
 3708 3708
-[[[137, 0.6637192867430921, 0.753669429657096], [0.75, 0.43973941368078173]], 7523.143872976303, 0.4329896907216495]
+3708 3708
 
-Runtime for 1 loop of DE termination: --- 7523.14387298 seconds ---
+Runtime for 1 loop of DE termination: --- 2939.14494395 seconds ---
 
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+2966 2966
+3708 3708
+3708 3708
 
-Total Runtime: --- 37665.3882749 seconds ---
+Runtime for 1 loop of DE termination: --- 2697.74203205 seconds ---
+
+[0.57884231536926145, 0.556640625, 0.45736434108527124, 0.52371541501976282, 0.56603773584905659]
+[0.5337078651685393, 0.55977229601518019, 0.5792682926829269, 0.4652996845425868, 0.50380228136882121]
+
+Total Runtime: --- 13739.1875539 seconds ---
 
 
 ------------------------------------------------------------
-Sender: LSF System <lsfadmin@n3l4-7>
-Subject: Job 612126: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics cs> Done
+Sender: LSF System <lsfadmin@n3l4-3>
+Subject: Job 660025: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics cs> Done
 
 Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics cs> was submitted from host <login04.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
-Job was executed on host(s) <8*n3l4-7>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3l4-3>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
 </home/aagrawa8> was used as the home directory.
 </home/aagrawa8/topics_de> was used as the working directory.
-Started at Fri Nov  4 12:20:48 2016
-Results reported at Fri Nov  4 22:48:35 2016
+Started at Mon Nov 28 13:18:37 2016
+Results reported at Mon Nov 28 17:07:38 2016
 
 Your job looked like:
 
@@ -200,9 +252,9 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time   :  37707.56 sec.
-    Max Memory :       332 MB
-    Max Swap   :      1343 MB
+    CPU time   :  13753.13 sec.
+    Max Memory :       344 MB
+    Max Swap   :      1352 MB
 
     Max Processes  :         3
     Max Threads    :        19
@@ -213,5 +265,5 @@ The output (if any) is above this job summary.
 
 PS:
 
-Read file <./err/cs.err.612126> for stderr output of this job.
+Read file <./err/cs.err.660025> for stderr output of this job.
 

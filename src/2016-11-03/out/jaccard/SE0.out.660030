@@ -29,31 +29,6 @@ Target Label: yes
 2030 2030
 2030 2030
 2030 2030
-2538 2538
-[[[78, 0.7602710954605432, 0.7648532511684383], [1.0, 0.82995951417004066]], 3137.095813035965, 0.85760517799352753]
-
-Runtime for 1 loop of DE termination: --- 3137.09581304 seconds ---
-
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
-2030 2030
 2030 2030
 2030 2030
 2030 2030
@@ -65,10 +40,20 @@ Runtime for 1 loop of DE termination: --- 3137.09581304 seconds ---
 2030 2030
 2030 2030
 2538 2538
-[[[131, 0.44252353158469493, 0.075156099819646], [0.75, 0.85051546391752564]], 3420.6104509830475, 0.83056478405315615]
+2538 2538
 
-Runtime for 1 loop of DE termination: --- 3420.61045098 seconds ---
+Runtime for 1 loop of DE termination: --- 872.078542948 seconds ---
 
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
 2030 2030
 2030 2030
 2030 2030
@@ -100,10 +85,20 @@ Runtime for 1 loop of DE termination: --- 3420.61045098 seconds ---
 2030 2030
 2030 2030
 2538 2538
-[[[88.6, 0.10297693079436032, 0.4283415564958784], [0.75, 0.9569377990430622]], 3788.480891942978, 0.93354430379746856]
+2538 2538
 
-Runtime for 1 loop of DE termination: --- 3788.48089194 seconds ---
+Runtime for 1 loop of DE termination: --- 1031.70642805 seconds ---
 
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
 2030 2030
 2030 2030
 2030 2030
@@ -135,10 +130,20 @@ Runtime for 1 loop of DE termination: --- 3788.48089194 seconds ---
 2030 2030
 2030 2030
 2538 2538
-[[[150, 0.2614271967114924, 0.9030979265048535], [1.0, 0.8214285714285714]], 3631.5800909996033, 0.91346153846153844]
+2538 2538
 
-Runtime for 1 loop of DE termination: --- 3631.580091 seconds ---
+Runtime for 1 loop of DE termination: --- 947.613530874 seconds ---
 
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
 2030 2030
 2030 2030
 2030 2030
@@ -170,24 +175,71 @@ Runtime for 1 loop of DE termination: --- 3631.580091 seconds ---
 2030 2030
 2030 2030
 2538 2538
-[[[121, 0.5693682460470674, 0.8218853954627423], [1.0, 0.72289156626506013]], 3465.8656208515167, 0.86092715231788086]
+2538 2538
 
-Runtime for 1 loop of DE termination: --- 3465.86562085 seconds ---
+Runtime for 1 loop of DE termination: --- 909.043284893 seconds ---
 
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2030 2030
+2538 2538
+2538 2538
 
-Total Runtime: --- 17443.697835 seconds ---
+Runtime for 1 loop of DE termination: --- 941.139683008 seconds ---
+
+[0.90909090909090906, 0.88888888888888873, 0.88607594936708856, 0.86956521739130432, 0.93354430379746856]
+[0.92879256965944279, 0.91054313099041528, 0.92879256965944279, 0.8308157099697886, 0.91194968553459121]
+
+Total Runtime: --- 4701.71340609 seconds ---
 
 
 ------------------------------------------------------------
 Sender: LSF System <lsfadmin@n2g2-9>
-Subject: Job 612131: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE0> Done
+Subject: Job 660030: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE0> Done
 
 Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics SE0> was submitted from host <login04.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
 Job was executed on host(s) <8*n2g2-9>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
 </home/aagrawa8> was used as the home directory.
 </home/aagrawa8/topics_de> was used as the working directory.
-Started at Fri Nov  4 12:20:57 2016
-Results reported at Fri Nov  4 17:11:41 2016
+Started at Mon Nov 28 13:18:37 2016
+Results reported at Mon Nov 28 14:37:01 2016
 
 Your job looked like:
 
@@ -200,9 +252,9 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time   :  17445.40 sec.
-    Max Memory :       231 MB
-    Max Swap   :      1378 MB
+    CPU time   :   4704.26 sec.
+    Max Memory :       226 MB
+    Max Swap   :      1367 MB
 
     Max Processes  :         3
     Max Threads    :        23
@@ -213,5 +265,5 @@ The output (if any) is above this job summary.
 
 PS:
 
-Read file <./err/SE0.err.612131> for stderr output of this job.
+Read file <./err/SE0.err.660030> for stderr output of this job.
 

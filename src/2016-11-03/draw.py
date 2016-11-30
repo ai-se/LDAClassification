@@ -14,7 +14,7 @@ bow=([0.5588003157063931, 0.54508076358296631, 0.32443531827515398, 0.5131253095
 if __name__ == '__main__':
     #ux,android,SE8
     fileB = ['SE0' ,'SE1','SE3','SE6','SE8','cs','diy','photo','rpg','scifi']
-    '''temp1={}
+    temp1={}
     path = '/Users/amrit/GITHUB/LDAClassification/src/2016-11-03/dump/jaccard/'
     for root, dirs, files in os.walk(path, topdown=False):
         for name in files:
@@ -22,13 +22,17 @@ if __name__ == '__main__':
             with open(a, 'rb') as handle:
                 temp = pickle.load(handle)
                 temp1 = dict(temp1.items() + temp.items())
-    print(temp1)'''
+    #print(temp1)
     Y_tuned_m = []
     Y_tuned_iqr = []
+    un_m=[]
+    un_iqr=[]
     for f in fileB:
         #print(tuned[f][-2])
-        Y_tuned_m.append(np.median(tuned[f][-2]))
-        Y_tuned_iqr.append(np.percentile(tuned[f][-2],75)-np.percentile(tuned[f][-2],25))
+        Y_tuned_m.append(np.median(temp1[f][-3]))
+        Y_tuned_iqr.append(np.percentile(temp1[f][-3],75)-np.percentile(temp1[f][-3],25))
+        un_m.append(np.median(temp1[f][-2]))
+        un_iqr.append(np.percentile(temp1[f][-1], 75) - np.percentile(temp1[f][-2], 25))
     issel=['hash']
 
     font = {
@@ -40,10 +44,7 @@ if __name__ == '__main__':
     plt.rcParams.update(paras)
     X = range(len(fileB))
     plt.figure(num=0, figsize=(25, 15))
-
-    #plt.title("Tuning improves Clustering and Classification from StackExchange websites")
-    #plt.title("Tuning")
-
+    print(un_m)
     for s in issel:
         Y_untuned_m = []
         Y_untuned_iqr = []
@@ -52,8 +53,10 @@ if __name__ == '__main__':
             Y_untuned_iqr.append(np.percentile(untuned[f][s]['linear'],75)-np.percentile(untuned[f][s]['linear'],25))
         line,=plt.plot(X,  Y_untuned_m, marker='o', markersize=20, label='median tf+l2norm')
         plt.plot(X, Y_untuned_iqr,linestyle="-.", marker='*',markersize=25,color=line.get_color(),label='iqr tf+l2norm')
-    line, = plt.plot(X, Y_tuned_m, marker='o', markersize=20, label='median tuned LDA')
-    plt.plot(X, Y_tuned_iqr, linestyle="-.", marker='*', markersize=25, color=line.get_color(), label='iqr tuned LDA')
+    line, = plt.plot(X, Y_tuned_m, marker='o', markersize=20, label='median tuned LDA+l2norm')
+    plt.plot(X, Y_tuned_iqr, linestyle="-.", marker='*', markersize=25, color=line.get_color(), label='iqr tuned LDA+l2norm')
+    line, = plt.plot(X, un_m, marker='o', markersize=20, label='median untuned LDA')
+    plt.plot(X, un_iqr, linestyle="-.", marker='*', markersize=25, color=line.get_color(), label='iqr untuned LDA')
     line, = plt.plot(X, bow[0], marker='o', markersize=20, label='median bow')
     plt.plot(X, bow[1], linestyle="-.", marker='*', markersize=25, color=line.get_color(), label='iqr bow')
 
@@ -64,4 +67,4 @@ if __name__ == '__main__':
     plt.ylabel("F2 Score", labelpad=30)
     plt.xlabel("Datasets", labelpad=30)
     plt.legend(bbox_to_anchor=(1.02, 1.13), loc=1, ncol=3, borderaxespad=0.1)
-    plt.savefig("jaccard_tuned_vs_l2row.png")
+    plt.savefig("jaccard_tuned_vs_l2row1.png")

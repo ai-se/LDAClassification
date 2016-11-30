@@ -29,31 +29,6 @@ Target Label: insulation
 4891 4891
 4891 4891
 4891 4891
-6114 6114
-[[[73, 0.9587989910349364, 0.12021876371928183], [0.5, 0.65610859728506787]], 11980.725681781769, 0.6021897810218978]
-
-Runtime for 1 loop of DE termination: --- 11980.7256818 seconds ---
-
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
-4891 4891
 4891 4891
 4891 4891
 4891 4891
@@ -65,10 +40,20 @@ Runtime for 1 loop of DE termination: --- 11980.7256818 seconds ---
 4891 4891
 4891 4891
 6114 6114
-[[[97.1, 0.6521561781404386, 0.7976135335091714], [0.75, 0.52040816326530615]], 11475.269180059433, 0.53244592346089858]
+6114 6114
 
-Runtime for 1 loop of DE termination: --- 11475.2691801 seconds ---
+Runtime for 1 loop of DE termination: --- 4627.74757695 seconds ---
 
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
 4891 4891
 4891 4891
 4891 4891
@@ -100,10 +85,20 @@ Runtime for 1 loop of DE termination: --- 11475.2691801 seconds ---
 4891 4891
 4891 4891
 6114 6114
-[[[95, 0.3404983553691791, 0.9632447143235703], [0.75, 0.55785123966942163]], 11238.82038283348, 0.41509433962264142]
+6114 6114
 
-Runtime for 1 loop of DE termination: --- 11238.8203828 seconds ---
+Runtime for 1 loop of DE termination: --- 5241.6000402 seconds ---
 
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
 4891 4891
 4891 4891
 4891 4891
@@ -135,10 +130,20 @@ Runtime for 1 loop of DE termination: --- 11238.8203828 seconds ---
 4891 4891
 4891 4891
 6114 6114
-[[[70, 0.31979110732187876, 0.01], [0.5, 0.64272211720226835]], 11299.225255012512, 0.56131260794473226]
+6114 6114
 
-Runtime for 1 loop of DE termination: --- 11299.225255 seconds ---
+Runtime for 1 loop of DE termination: --- 5302.52100515 seconds ---
 
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
 4891 4891
 4891 4891
 4891 4891
@@ -170,24 +175,71 @@ Runtime for 1 loop of DE termination: --- 11299.225255 seconds ---
 4891 4891
 4891 4891
 6114 6114
-[[[82, 0.4147610136843711, 0.7421218273836252], [0.75, 0.51485148514851475]], 11905.667557954788, 0.46923076923076912]
+6114 6114
 
-Runtime for 1 loop of DE termination: --- 11905.667558 seconds ---
+Runtime for 1 loop of DE termination: --- 4873.54065394 seconds ---
 
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+4891 4891
+6114 6114
+6114 6114
 
-Total Runtime: --- 57900.0261779 seconds ---
+Runtime for 1 loop of DE termination: --- 5169.94821095 seconds ---
+
+[0.65384615384615397, 0.60553633217993075, 0.58669001751313488, 0.68904593639575973, 0.6428571428571429]
+[0.40557667934093788, 0.49786628733997146, 0.43726235741444869, 0.53418803418803429, 0.55905511811023623]
+
+Total Runtime: --- 25215.601779 seconds ---
 
 
 ------------------------------------------------------------
-Sender: LSF System <lsfadmin@n3l4-5>
-Subject: Job 612127: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy> Done
+Sender: LSF System <lsfadmin@n3l4-1>
+Subject: Job 660026: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy> Done
 
 Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics diy> was submitted from host <login04.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
-Job was executed on host(s) <8*n3l4-5>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n3l4-1>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
 </home/aagrawa8> was used as the home directory.
 </home/aagrawa8/topics_de> was used as the working directory.
-Started at Fri Nov  4 12:20:48 2016
-Results reported at Sat Nov  5 04:25:49 2016
+Started at Mon Nov 28 13:18:37 2016
+Results reported at Mon Nov 28 20:18:54 2016
 
 Your job looked like:
 
@@ -200,9 +252,9 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time   :  57946.45 sec.
-    Max Memory :       479 MB
-    Max Swap   :      1489 MB
+    CPU time   :  25232.96 sec.
+    Max Memory :       508 MB
+    Max Swap   :      1514 MB
 
     Max Processes  :         3
     Max Threads    :        19
@@ -213,5 +265,5 @@ The output (if any) is above this job summary.
 
 PS:
 
-Read file <./err/diy.err.612127> for stderr output of this job.
+Read file <./err/diy.err.660026> for stderr output of this job.
 

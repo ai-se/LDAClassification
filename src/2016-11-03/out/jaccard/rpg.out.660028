@@ -29,31 +29,6 @@ Target Label: dnd-5e
 3586 3586
 3586 3586
 3586 3586
-4483 4483
-[[[139, 0.23895973417989835, 0.8752770766923749], [0.75, 0.3125]], 6846.719393968582, 0.30156165858912226]
-
-Runtime for 1 loop of DE termination: --- 6846.71939397 seconds ---
-
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
-3586 3586
 3586 3586
 3586 3586
 3586 3586
@@ -65,10 +40,20 @@ Runtime for 1 loop of DE termination: --- 6846.71939397 seconds ---
 3586 3586
 3586 3586
 4483 4483
-[[[128.3, 0.5954408505980529, 0.9916928666336362], [0.75, 0.33554817275747506]], 7260.958876132965, 0.29738878143133463]
+4483 4483
 
-Runtime for 1 loop of DE termination: --- 7260.95887613 seconds ---
+Runtime for 1 loop of DE termination: --- 2387.32327104 seconds ---
 
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
 3586 3586
 3586 3586
 3586 3586
@@ -100,10 +85,20 @@ Runtime for 1 loop of DE termination: --- 7260.95887613 seconds ---
 3586 3586
 3586 3586
 4483 4483
-[[[145.1, 0.718035999915716, 0.9283214802640409], [0.75, 0.32440476190476186]], 7200.810341119766, 0.27751423149905124]
+4483 4483
 
-Runtime for 1 loop of DE termination: --- 7200.81034112 seconds ---
+Runtime for 1 loop of DE termination: --- 2584.00283313 seconds ---
 
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
 3586 3586
 3586 3586
 3586 3586
@@ -135,10 +130,20 @@ Runtime for 1 loop of DE termination: --- 7200.81034112 seconds ---
 3586 3586
 3586 3586
 4483 4483
-[[[82.7, 0.3046250853243862, 0.9289187422594142], [0.75, 0.35714285714285715]], 6170.637305021286, 0.29317010309278352]
+4483 4483
 
-Runtime for 1 loop of DE termination: --- 6170.63730502 seconds ---
+Runtime for 1 loop of DE termination: --- 2336.24900818 seconds ---
 
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
 3586 3586
 3586 3586
 3586 3586
@@ -170,24 +175,71 @@ Runtime for 1 loop of DE termination: --- 6170.63730502 seconds ---
 3586 3586
 3586 3586
 4483 4483
-[[[70, 0.448829835469857, 0.7481560700301431], [0.75, 0.37269372693726938]], 6270.791911125183, 0.32741738066095472]
+4483 4483
 
-Runtime for 1 loop of DE termination: --- 6270.79191113 seconds ---
+Runtime for 1 loop of DE termination: --- 2682.54500318 seconds ---
 
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+3586 3586
+4483 4483
+4483 4483
 
-Total Runtime: --- 33750.0786071 seconds ---
+Runtime for 1 loop of DE termination: --- 2351.1402421 seconds ---
+
+[0.34006734006734007, 0.3816526610644258, 0.33333333333333326, 0.37676056338028169, 0.36206896551724138]
+[0.3453279164248404, 0.32043530834340989, 0.32701711491442542, 0.33983849259757737, 0.33217793183131139]
+
+Total Runtime: --- 12341.435703 seconds ---
 
 
 ------------------------------------------------------------
-Sender: LSF System <lsfadmin@n2f1-5>
-Subject: Job 612129: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics rpg> Done
+Sender: LSF System <lsfadmin@n2g2-10>
+Subject: Job 660028: </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics rpg> Done
 
 Job </share2/aagrawa8/miniconda2/bin/python2.7 DE_topics.py _topics rpg> was submitted from host <login04.hpc.ncsu.edu> by user <aagrawa8> in cluster <henry2>.
-Job was executed on host(s) <8*n2f1-5>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
+Job was executed on host(s) <8*n2g2-10>, in queue <shared_memory>, as user <aagrawa8> in cluster <henry2>.
 </home/aagrawa8> was used as the home directory.
 </home/aagrawa8/topics_de> was used as the working directory.
-Started at Fri Nov  4 12:20:57 2016
-Results reported at Fri Nov  4 21:43:28 2016
+Started at Mon Nov 28 13:18:37 2016
+Results reported at Mon Nov 28 16:44:21 2016
 
 Your job looked like:
 
@@ -200,9 +252,9 @@ Successfully completed.
 
 Resource usage summary:
 
-    CPU time   :  33753.77 sec.
-    Max Memory :       480 MB
-    Max Swap   :      1628 MB
+    CPU time   :  12346.65 sec.
+    Max Memory :       496 MB
+    Max Swap   :      1635 MB
 
     Max Processes  :         3
     Max Threads    :        23
@@ -213,5 +265,5 @@ The output (if any) is above this job summary.
 
 PS:
 
-Read file <./err/rpg.err.612129> for stderr output of this job.
+Read file <./err/rpg.err.660028> for stderr output of this job.
 
