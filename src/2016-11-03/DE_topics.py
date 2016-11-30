@@ -14,6 +14,7 @@ import os, pickle
 import svmtopics
 import sys
 import numpy as np
+from scipy.sparse import csr_matrix
 
 sys.dont_write_bytecode = True
 
@@ -206,6 +207,15 @@ def split_two(corpus=[], label=np.array([])):
 
     return {'pos': pos, 'neg': neg}
 
+def l2normalize(mat):
+    mat = mat.asfptype()
+    for i in xrange(mat.shape[0]):
+        nor = np.linalg.norm(mat[i].data, 2)
+        if not nor == 0:
+            for k in mat[i].indices:
+                mat[i, k] = mat[i, k] / nor
+    return mat
+
 def _topics(res=''):
     #fileB = ['pitsA', 'pitsB', 'pitsC', 'pitsD', 'pitsE', 'pitsF', 'processed_citemap.txt']
     #fileB = ['SE0', 'SE6', 'SE1', 'SE8', 'SE3']
@@ -224,7 +234,8 @@ def _topics(res=''):
     cut_pos = int(len(pos) * 80 / 100)
     cut_neg = int(len(neg) * 80 / 100)
     ##list of f2 scores
-    lis=[]
+    tunedlis=[]
+    untunedlis=[]
     #dictionary containing bestone, time for 1 run, f2
     cross={}
     #dictionary containing cross, lis,full time
@@ -252,7 +263,7 @@ def _topics(res=''):
         pop = [[random.randint(bounds[0][0], bounds[0][1]), random.uniform(bounds[1][0], bounds[1][1]),
                         random.uniform(bounds[2][0], bounds[2][1])]
                        for _ in range(10)]
-        v, score, final_para_dic = de.solve(main, pop, iterations=2, file=res, term=7, data_samples=data_train,target=train_label,tune='yes')
+        v, score, final_para_dic = de.solve(main, pop, iterations=3, file=res, term=7, data_samples=data_train,target=train_label,tune='yes')
         ##score is a list of [jaccard and fscore]
         bestone = [v,score]
         # runtime,format dict, file,=runtime in secs
@@ -262,21 +273,34 @@ def _topics(res=''):
         lda1 = lda.LDA(n_topics=int(l[0][0]), alpha=l[0][1], eta=l[0][2], n_iter=200)
         lda1.fit_transform(tf)
         tops = lda1.doc_topic_
+        tops = csr_matrix(tops)
+        tops = l2normalize(tops).toarray()
         f2=svmtopics.main(data=tops, file=res, target=train_label+test_label,tune='no')
-        lis.append(f2)
+        tunedlis.append(f2)
+
+        ## untuned experiment
+        lda2 = lda.LDA(n_topics=20, alpha=0.1, eta=0.01, n_iter=200)
+        lda2.fit_transform(tf)
+        tops1 = lda2.doc_topic_
+        tops1 = csr_matrix(tops1)
+        tops1 = l2normalize(tops1).toarray()
+        untuned_f2 = svmtopics.main(data=tops1, file=res, target=train_label + test_label, tune='no')
+        untunedlis.append(untuned_f2)
+
         time2 = time.time() - start_time1
-        cross[folds] = [ bestone,time2,f2]
-        print([bestone,time2,f2])
+        cross[folds] = [ bestone,time2,f2,untuned_f2]
+
         print("\nRuntime for 1 loop of DE termination: --- %s seconds ---\n" % (time2))
     time1=time.time() - start_time
-    file[res]=[cross,lis,time1]
+    print(tunedlis)
+    print(untunedlis)
+    file[res]=[cross,tunedlis,untunedlis,time1]
     print("\nTotal Runtime: --- %s seconds ---\n" % (time.time() - start_time))
-    with open('dump/DE_log_tune_grow_oracle'+res+'.pickle', 'wb') as handle:
+    with open('dump/DE_jaccard_tune_grow_oracle'+res+'.pickle', 'wb') as handle:
         pickle.dump(file, handle)
 
 
     ##untuned experiment
-
     '''l={}
     temp1={}
     ##with term = 7, 10

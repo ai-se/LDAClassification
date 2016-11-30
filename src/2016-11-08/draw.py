@@ -62,4 +62,4 @@ if __name__ == '__main__':
     plt.ylabel("F2 Score", labelpad=30)
     plt.xlabel("Datasets", labelpad=30)
     plt.legend(bbox_to_anchor=(1.07, 1.13), loc=1, ncol=3, borderaxespad=0.1)
-    plt.savefig("magic_weights.png")
+    plt.savefig("magic.png")

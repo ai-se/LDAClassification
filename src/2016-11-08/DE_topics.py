@@ -203,7 +203,7 @@ def _topics(res=''):
     pos = np.array(split['pos'])
     neg = np.array(split['neg'])
 
-    cut_pos, cut_neg = cut_position(pos, neg, percentage=10)
+    cut_pos, cut_neg = cut_position(pos, neg, percentage=20)
     ##list of f2 scores
     untuned_lis = []
     tuned_lis = []
@@ -253,12 +253,6 @@ def _topics(res=''):
         neg1 = np.array(split['neg'])
         data_train, train_label, data_test, test_label = divide_train_test(pos1, neg1, cut_pos, cut_neg)
 
-        split1 = split_two(corpus=data_test, label=np.array(test_label))
-        pos1 = np.array(split1['pos'])
-        neg1 = np.array(split1['neg'])
-        cut_pos1, cut_neg1 = cut_position(pos1, neg1, percentage=50)
-        data_grow, grow_label, data_test, test_label = divide_train_test(pos1, neg1, cut_pos1, cut_neg1)
-
         ## Run with default features
         perc = len(train_label) * 100 / len(train_label + test_label)
 
@@ -270,6 +264,14 @@ def _topics(res=''):
         untuned_lis.append(f21)
         time2 = time.time() - start_time1
         bestone.append(time2)
+
+        split1 = split_two(corpus=data_test, label=np.array(test_label))
+        pos1 = np.array(split1['pos'])
+        neg1 = np.array(split1['neg'])
+        cut_pos1, cut_neg1 = cut_position(pos1, neg1, percentage=50)
+        data_grow, grow_label, data_test, test_label = divide_train_test(pos1, neg1, cut_pos1, cut_neg1)
+
+
         start_time2 = time.time()
 
         ## Another DE to find the magic weights
@@ -281,9 +283,10 @@ def _topics(res=''):
                                             data=data_train + data_grow, target=train_label + grow_label,
                                             tune='no', percentage=perc1)
         bestone1 = [v, score]
+        perc1 = (len(train_label) + len(grow_label) ) * 100 / len(train_label + grow_label+test_label)
 
         #testing the modified features.
-        f22 = svmtopics.main(*v, data=data_train+data_test, target=train_label + test_label, tune='no',percentage=perc)
+        f22 = svmtopics.main(*v, data=data_train+data_grow+data_test, target=train_label + grow_label+test_label, tune='no',percentage=perc1)
         time3 = time.time() - start_time2
         bestone1.append(time3)
         tuned_lis.append(f22)

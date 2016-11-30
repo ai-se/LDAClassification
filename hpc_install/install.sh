@@ -6,7 +6,7 @@
 
 #bash Miniconda2-latest-Linux-x86_64.sh # take care of the installation directory
 
-#-q standard -W 2400
+#-q standard -W 5000
 #-q shared_memory -W 10000
 #-q long -W 20000
 

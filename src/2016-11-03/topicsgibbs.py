@@ -155,7 +155,7 @@ def main(*x, **r):
     start_time = time.time()
     base = '/share/aagrawa8/Data/SE/'
     #base = '/home/amrit/GITHUB/LDAClassification/results/SE/'
-    path = os.path.join(base, 'log_tune_grow_oracle', r['file'], str(r['term']))
+    path = os.path.join(base, 'jaccard_tune_grow_oracle', r['file'], str(r['term']))
     #path = os.path.join(base, 'untuned_svm_topics_smote', r['file'], str(r['term']))
     if not os.path.exists(path):
         os.makedirs(path)
@@ -169,14 +169,14 @@ def main(*x, **r):
 
     top=[]
     fscore = svmtopics.main(data=tops, file=r['file'], target=tar,tune=r['tune'])
-    '''for i in topics:
+    for i in topics:
         temp=str(i.encode('ascii','ignore'))
         top.append(temp)
-    a = jaccard(b, score_topics=top, term=r['term'])'''
+    a = jaccard(b, score_topics=top, term=r['term'])
     fo = open(path1, 'a+')
     #fo.write("\nScore: " + str(a))
-    fo.write("\nScore: " + str(log))
+    fo.write("\nScore: " + str(a))
     fo.write("\nRuntime: --- %s seconds ---\n" % (time.time() - start_time))
     fo.close()
 
-    return log,fscore
+    return a,fscore

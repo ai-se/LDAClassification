@@ -3,5 +3,6 @@
 - Crossval on training and tuning
 - Crossval on training+tuning and testing
 - other dont combine training and tuning
+- l2 row normalization
 - tuning for loglikelihood/jaccard as well as fscore. Modified DE as well
 - for untuned k=[10,20,40,80,200]
