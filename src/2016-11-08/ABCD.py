@@ -1,5 +1,7 @@
 from __future__ import division
-from pdb import set_trace
+import sys
+
+sys.dont_write_bytecode = True
 
 class counter():
   def __init__(self, before, after, indx):

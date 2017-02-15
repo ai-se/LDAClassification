@@ -15,8 +15,7 @@ conda remove mkl mkl-service -y
 conda install nomkl -y
 conda install pip numpy scipy scikit-learn matplotlib -y
 #conda install mkl -y
-pip install -U lda
-pip install -U nltk
+pip install -U lda nltk
 
 #python
 #import nltk

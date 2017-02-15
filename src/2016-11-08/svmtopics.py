@@ -8,6 +8,7 @@ from sklearn.neighbors import NearestNeighbors
 from sklearn import svm
 import sys
 import DE_topics
+from scipy.sparse import csr_matrix
 
 sys.dont_write_bytecode = True
 
@@ -16,8 +17,20 @@ from ABCD import ABCD
 
 def main(*x,**r):
     #print(np.array(x))
-    return _test(data=np.multiply(np.array(r['data']),np.array(x)),  targetlist=r['target'],tune=r['tune'],perc=r['percentage']),0
+    data=np.multiply(np.array(r['data']),np.array(x))
+    data = csr_matrix(data)
+    data = l2normalize(data).toarray()
+    return _test(data=data, targetlist=r['target'],tune=r['tune'],perc=r['percentage']),0
 
+
+def l2normalize(mat):
+    mat = mat.asfptype()
+    for i in xrange(mat.shape[0]):
+        nor = np.linalg.norm(mat[i].data, 2)
+        if not nor == 0:
+            for k in mat[i].indices:
+                mat[i, k] = mat[i, k] / nor
+    return mat
 
 def split_two(corpus, label):
     pos = []
@@ -140,19 +153,6 @@ def cross_val(data=[],  folds=5, target=[],tune='yes',perc=50):
         label_train = ['pos'] * len(pos_train) + ['neg'] * len(neg_train)
 
         return data_train1, label_train
-
-
-    #data = make_feature(data, n_features=n_feature)
-
-    ###OTHER PREPROCESSING STEPS
-    ## normalization to min max scale
-    #min_max_scaler = MinMaxScaler()
-    #data = min_max_scaler.fit_transform(data)
-    #data=data*1000
-
-    ## l2 normalization
-    #data = normalize(data, norm='l2')
-    #data=data*100
 
     if tune=='on':
         split = split_two(corpus=data, label=target)

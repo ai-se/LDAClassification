@@ -13,7 +13,6 @@ import pickle
 import svmtopics
 import sys
 import numpy as np
-from scipy.sparse import csr_matrix
 
 sys.dont_write_bytecode = True
 
@@ -117,7 +116,7 @@ class DE(object):
 "Load data from file to list of lists"
 
 
-def readfile1(filename='', thres=[0.02, 0.07]):
+def readfile1(filename='', thres=[0.02, 0.05]):
     dict = []
     label = []
     targetlabel = []
@@ -220,10 +219,7 @@ def _topics(res=''):
         pos = pos[pos_shuffle]
         neg = neg[neg_shuffle]
         data_train, train_label, data_test, test_label = divide_train_test(pos, neg, cut_pos, cut_neg)
-        # stability score format dict, file,lab=score
-        # parameter variations (k,a,b), format, list of lists, file,lab=[[k,a,b], Rn score, fscore]
-        # final_para_dic={}
-        # final paras and scores, file, lab=[[k,a,b],[r, f1]]
+
         de = DE(F=0.7, CR=0.3, x='rand')
 
         global max_fitness
@@ -242,11 +238,7 @@ def _topics(res=''):
         tf = tf_vectorizer.fit_transform(data_train + data_test)
         lda1 = lda.LDA(n_topics=int(l[0][0]), alpha=l[0][1], eta=l[0][2], n_iter=200)
         lda1.fit_transform(tf)
-
-        # l2 normalization
         tops = lda1.doc_topic_
-        #tops = csr_matrix(tops)
-        #tops = l2normalize(tops).toarray()
 
         split = split_two(corpus=tops, label=np.array(train_label + test_label))
         pos1 = np.array(split['pos'])
