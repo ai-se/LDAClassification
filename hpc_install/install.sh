@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#cd /share2/aagrawa8/
+#cd /share/tjmenzie/aagrawa8/
 
 #wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
 
@@ -16,6 +16,7 @@ conda install nomkl -y
 conda install pip numpy scipy scikit-learn matplotlib -y
 #conda install mkl -y
 pip install -U lda nltk
+pip install pandas
 
 #python
 #import nltk
